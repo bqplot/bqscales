@@ -47,8 +47,7 @@ from ._frontend import module_version
 
 
 def register_scale(key=None):
-    """Returns a decorator to register a scale type in the scale type
-    registry.
+    """Return a decorator to register a scale type in the scale type registry.
 
     If no key is provided, the class name is used as a key. A key is
     provided for each core ipygg scale type so that the frontend can use
@@ -62,7 +61,6 @@ def register_scale(key=None):
 
 
 class Scale(Widget):
-
     """The base scale class.
 
     Scale objects represent a mapping between data (the domain) and a visual
@@ -83,6 +81,7 @@ class Scale(Widget):
         attribute used to determine which scale takes precedence in cases when
         two or more scales have the same rtype and dtype.
     """
+
     scale_types = {}
     precedence = 1
     domain_class = Type(Float)
@@ -99,19 +98,18 @@ class Scale(Widget):
 
 
 class GeoScale(Scale):
-
     """The base projection scale class for Map marks.
 
     The GeoScale represents a mapping between topographic data and a
     2d visual representation.
     """
+
     _view_name = Unicode('GeoScale').tag(sync=True)
     _model_name = Unicode('GeoScaleModel').tag(sync=True)
 
 
 @register_scale('ipygg.Mercator')
 class Mercator(GeoScale):
-
     """A geographical projection scale commonly used for world maps.
 
     The Mercator projection is a cylindrical map projection which ensures that
@@ -143,7 +141,6 @@ class Mercator(GeoScale):
 
 @register_scale('ipygg.Albers')
 class Albers(GeoScale):
-
     """A geographical scale which is an alias for a conic equal area projection.
 
     The Albers projection is a conic equal area map. It does not preserve scale
@@ -183,9 +180,7 @@ class Albers(GeoScale):
 
 @register_scale('ipygg.AlbersUSA')
 class AlbersUSA(GeoScale):
-
-    """A composite projection of four Albers projections meant specifically for
-    the United States.
+    """A composite projection of four Albers projections meant specifically for the United States.
 
     Attributes
     ----------
@@ -209,7 +204,6 @@ class AlbersUSA(GeoScale):
 
 @register_scale('ipygg.EquiRectangular')
 class EquiRectangular(GeoScale):
-
     """An elementary projection that uses the identity function.
 
     The projection is neither equal-area nor conformal.
@@ -232,9 +226,7 @@ class EquiRectangular(GeoScale):
 
 @register_scale('ipygg.Orthographic')
 class Orthographic(GeoScale):
-
-    """A perspective projection that depicts a hemisphere as it appears from
-    outer space.
+    """A perspective projection that depicts a hemisphere as it appears from outer space.
 
     The projection is neither equal-area nor conformal.
 
@@ -266,7 +258,6 @@ class Orthographic(GeoScale):
 
 @register_scale('ipygg.Gnomonic')
 class Gnomonic(GeoScale):
-
     """A perspective projection which displays great circles as straight lines.
 
     The projection is neither equal-area nor conformal.
@@ -296,9 +287,7 @@ class Gnomonic(GeoScale):
 
 @register_scale('ipygg.Stereographic')
 class Stereographic(GeoScale):
-
-    """A perspective projection that uses a bijective and smooth map at every
-    point except the projection point.
+    """A perspective projection that uses a bijective and smooth map at every point except the projection point.
 
     The projection is not an equal-area projection but it is conformal.
 
@@ -330,7 +319,6 @@ class Stereographic(GeoScale):
 
 @register_scale('ipygg.LinearScale')
 class LinearScale(Scale):
-
     """A linear scale.
 
     An affine mapping from a numerical domain to a numerical range.
@@ -365,6 +353,7 @@ class LinearScale(Scale):
         min_range must be <= mid_range.
         Used only if stabilized is True.
     """
+
     rtype = 'Number'
     dtype = np.number
     precedence = 2
@@ -380,7 +369,6 @@ class LinearScale(Scale):
 
 @register_scale('ipygg.LogScale')
 class LogScale(Scale):
-
     """A log scale.
 
     A logarithmic mapping from a numerical domain to a numerical range.
@@ -397,6 +385,7 @@ class LogScale(Scale):
     dtype: type (class-level attribute)
         the associated data type / domain type
     """
+
     rtype = 'Number'
     dtype = np.number
     min = Float(None, allow_none=True).tag(sync=True)
@@ -408,7 +397,6 @@ class LogScale(Scale):
 
 @register_scale('ipygg.DateScale')
 class DateScale(Scale):
-
     """A date scale, with customizable formatting.
 
     An affine mapping from dates to a numerical range.
@@ -427,6 +415,7 @@ class DateScale(Scale):
     dtype: type (class-level attribute)
         the associated data type / domain type
     """
+
     rtype = 'Number'
     dtype = np.datetime64
     domain_class = Type(Date)
@@ -439,7 +428,6 @@ class DateScale(Scale):
 
 @register_scale('ipygg.OrdinalScale')
 class OrdinalScale(Scale):
-
     """An ordinal scale.
 
     A mapping from a discrete set of values to a numerical range.
@@ -454,6 +442,7 @@ class OrdinalScale(Scale):
     dtype: type (class-level attribute)
         the associated data type / domain type
     """
+
     rtype = 'Number'
     dtype = np.str_
     domain = List().tag(sync=True)
@@ -464,7 +453,6 @@ class OrdinalScale(Scale):
 
 @register_scale('ipygg.ColorScale')
 class ColorScale(Scale):
-
     """A color scale.
 
     A mapping from numbers to colors. The relation is affine by part.
@@ -490,6 +478,7 @@ class ColorScale(Scale):
     dtype: type (class-level attribute)
         the associated data type / domain type
     """
+
     rtype = 'Color'
     dtype = np.number
     scale_type = Enum(['linear'], default_value='linear').tag(sync=True)
@@ -507,7 +496,6 @@ class ColorScale(Scale):
 
 @register_scale('ipygg.DateColorScale')
 class DateColorScale(ColorScale):
-
     """A date color scale.
 
     A mapping from dates to a numerical domain.
@@ -526,6 +514,7 @@ class DateColorScale(ColorScale):
     dtype: type (class-level attribute)
         the associated data type / domain type
     """
+
     dtype = np.datetime64
     domain_class = Type(Date)
 
@@ -539,7 +528,6 @@ class DateColorScale(ColorScale):
 
 @register_scale('ipygg.OrdinalColorScale')
 class OrdinalColorScale(ColorScale):
-
     """An ordinal color scale.
 
     A mapping from a discrete set of values to colors.
@@ -554,6 +542,7 @@ class OrdinalColorScale(ColorScale):
     dtype: type (class-level attribute)
         the associated data type / domain type
     """
+
     rtype = 'Color'
     dtype = np.str_
     domain = List().tag(sync=True)
