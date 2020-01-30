@@ -6,12 +6,15 @@ from traitlets import TraitType
 
 
 def date_to_json(value, obj):
+    """Serialize a Date value."""
     if value is None:
         return value
     else:
         return value.strftime('%Y-%m-%dT%H:%M:%S.%f')
 
+
 def date_from_json(value, obj):
+    """Deserialize a Date value."""
     if value:
         return datetime.datetime.strptime(value, '%Y-%m-%dT%H:%M:%S.%f')
     else:
@@ -19,8 +22,8 @@ def date_from_json(value, obj):
 
 date_serialization = dict(to_json=date_to_json, from_json=date_from_json)
 
-class Date(TraitType):
 
+class Date(TraitType):
     """
     A datetime trait type.
 
@@ -29,6 +32,7 @@ class Date(TraitType):
     """
 
     def validate(self, obj, value):
+        """Validate the Date value."""
         try:
             if isinstance(value, datetime.datetime):
                 return value
@@ -45,6 +49,7 @@ class Date(TraitType):
         self.error(obj, value)
 
     def __init__(self, default_value=datetime.datetime.today(), **kwargs):
+        """Create a Date instance."""
         args = (default_value,)
         self.default_value = default_value
         super(Date, self).__init__(args=args, **kwargs)
