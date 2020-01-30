@@ -11,6 +11,8 @@ const data = require('../package.json');
  */
 export const MODULE_VERSION = data.version;
 
+export const SEMVER_RANGE = "^" + MODULE_VERSION;
+
 /*
  * The current package name.
  */
