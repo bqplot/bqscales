@@ -13,7 +13,7 @@ import {
   IJupyterWidgetRegistry
  } from '@jupyter-widgets/base';
 
-import * as widgetExports from './widget';
+import * as widgetExports from './widgets';
 
 import {
   MODULE_NAME, MODULE_VERSION
@@ -22,16 +22,16 @@ import {
 const EXTENSION_ID = 'ipygg:plugin';
 
 /**
- * The example plugin.
+ * The ipygg plugin.
  */
-const examplePlugin: IPlugin<Application<Widget>, void> = {
+const ipyggPlugin: IPlugin<Application<Widget>, void> = {
   id: EXTENSION_ID,
   requires: [IJupyterWidgetRegistry],
   activate: activateWidgetExtension,
   autoStart: true
 };
 
-export default examplePlugin;
+export default ipyggPlugin;
 
 
 /**
