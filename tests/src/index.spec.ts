@@ -12,7 +12,7 @@ import {
 } from './utils.spec';
 
 import {
-  ExampleModel, ExampleView
+  LinearScale, LinearScaleModel
 } from '../../src/';
 
 
@@ -21,16 +21,20 @@ describe('Example', () => {
   describe('ExampleModel', () => {
 
     it('should be createable', () => {
-      let model = createTestModel(ExampleModel);
-      expect(model).to.be.an(ExampleModel);
-      expect(model.get('value')).to.be('Hello World');
+      const model = createTestModel(LinearScaleModel);
+
+      expect(model).to.be.an(LinearScaleModel);
+      expect(model.get('min')).to.be(null);
+      expect(model.get('max')).to.be(null);
     });
 
-    it('should be createable with a value', () => {
-      let state = { value: 'Foo Bar!' }
-      let model = createTestModel(ExampleModel, state);
-      expect(model).to.be.an(ExampleModel);
-      expect(model.get('value')).to.be('Foo Bar!');
+    it('should be createable with some model values', () => {
+      const state = { min: 1.2 };
+      const model = createTestModel(LinearScaleModel, state);
+
+      expect(model).to.be.an(LinearScaleModel);
+      expect(model.get('min')).to.be(1.2);
+      expect(model.get('max')).to.be(null);
     });
 
   });
