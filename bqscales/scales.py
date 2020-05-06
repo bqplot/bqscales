@@ -18,7 +18,7 @@ r"""
 Scales
 ======
 
-.. currentmodule:: ipygg.scales
+.. currentmodule:: bqscales.scales
 
 .. autosummary::
    :toctree: _generate/
@@ -50,7 +50,7 @@ def register_scale(key=None):
     """Return a decorator to register a scale type in the scale type registry.
 
     If no key is provided, the class name is used as a key. A key is
-    provided for each core ipygg scale type so that the frontend can use
+    provided for each core bqscales scale type so that the frontend can use
     this key regardless of the kernal language.
     """
     def wrap(scale):
@@ -90,8 +90,8 @@ class Scale(Widget):
 
     _view_name = Unicode('Scale').tag(sync=True)
     _model_name = Unicode('ScaleModel').tag(sync=True)
-    _view_module = Unicode('ipygg').tag(sync=True)
-    _model_module = Unicode('ipygg').tag(sync=True)
+    _view_module = Unicode('bqscales').tag(sync=True)
+    _model_module = Unicode('bqscales').tag(sync=True)
     _view_module_version = Unicode(module_version).tag(sync=True)
     _model_module_version = Unicode(module_version).tag(sync=True)
     _ipython_display_ = None  # We cannot display a scale outside of a figure
@@ -108,7 +108,7 @@ class GeoScale(Scale):
     _model_name = Unicode('GeoScaleModel').tag(sync=True)
 
 
-@register_scale('ipygg.Mercator')
+@register_scale('bqscales.Mercator')
 class Mercator(GeoScale):
     """A geographical projection scale commonly used for world maps.
 
@@ -139,7 +139,7 @@ class Mercator(GeoScale):
     _model_name = Unicode('MercatorModel').tag(sync=True)
 
 
-@register_scale('ipygg.Albers')
+@register_scale('bqscales.Albers')
 class Albers(GeoScale):
     """A geographical scale which is an alias for a conic equal area projection.
 
@@ -178,7 +178,7 @@ class Albers(GeoScale):
     _model_name = Unicode('AlbersModel').tag(sync=True)
 
 
-@register_scale('ipygg.AlbersUSA')
+@register_scale('bqscales.AlbersUSA')
 class AlbersUSA(GeoScale):
     """A composite projection of four Albers projections meant specifically for the United States.
 
@@ -202,7 +202,7 @@ class AlbersUSA(GeoScale):
     _model_name = Unicode('AlbersUSAModel').tag(sync=True)
 
 
-@register_scale('ipygg.EquiRectangular')
+@register_scale('bqscales.EquiRectangular')
 class EquiRectangular(GeoScale):
     """An elementary projection that uses the identity function.
 
@@ -224,7 +224,7 @@ class EquiRectangular(GeoScale):
     _model_name = Unicode('EquiRectangularModel').tag(sync=True)
 
 
-@register_scale('ipygg.Orthographic')
+@register_scale('bqscales.Orthographic')
 class Orthographic(GeoScale):
     """A perspective projection that depicts a hemisphere as it appears from outer space.
 
@@ -256,7 +256,7 @@ class Orthographic(GeoScale):
     _model_name = Unicode('OrthographicModel').tag(sync=True)
 
 
-@register_scale('ipygg.Gnomonic')
+@register_scale('bqscales.Gnomonic')
 class Gnomonic(GeoScale):
     """A perspective projection which displays great circles as straight lines.
 
@@ -285,7 +285,7 @@ class Gnomonic(GeoScale):
     _model_name = Unicode('GnomonicModel').tag(sync=True)
 
 
-@register_scale('ipygg.Stereographic')
+@register_scale('bqscales.Stereographic')
 class Stereographic(GeoScale):
     """A perspective projection that uses a bijective and smooth map at every point except the projection point.
 
@@ -317,7 +317,7 @@ class Stereographic(GeoScale):
     _model_name = Unicode('StereographicModel').tag(sync=True)
 
 
-@register_scale('ipygg.LinearScale')
+@register_scale('bqscales.LinearScale')
 class LinearScale(Scale):
     """A linear scale.
 
@@ -367,7 +367,7 @@ class LinearScale(Scale):
     _model_name = Unicode('LinearScaleModel').tag(sync=True)
 
 
-@register_scale('ipygg.LogScale')
+@register_scale('bqscales.LogScale')
 class LogScale(Scale):
     """A log scale.
 
@@ -395,7 +395,7 @@ class LogScale(Scale):
     _model_name = Unicode('LogScaleModel').tag(sync=True)
 
 
-@register_scale('ipygg.DateScale')
+@register_scale('bqscales.DateScale')
 class DateScale(Scale):
     """A date scale, with customizable formatting.
 
@@ -426,7 +426,7 @@ class DateScale(Scale):
     _model_name = Unicode('DateScaleModel').tag(sync=True)
 
 
-@register_scale('ipygg.OrdinalScale')
+@register_scale('bqscales.OrdinalScale')
 class OrdinalScale(Scale):
     """An ordinal scale.
 
@@ -451,7 +451,7 @@ class OrdinalScale(Scale):
     _model_name = Unicode('OrdinalScaleModel').tag(sync=True)
 
 
-@register_scale('ipygg.ColorScale')
+@register_scale('bqscales.ColorScale')
 class ColorScale(Scale):
     """A color scale.
 
@@ -494,7 +494,7 @@ class ColorScale(Scale):
     _model_name = Unicode('ColorScaleModel').tag(sync=True)
 
 
-@register_scale('ipygg.DateColorScale')
+@register_scale('bqscales.DateColorScale')
 class DateColorScale(ColorScale):
     """A date color scale.
 
@@ -526,7 +526,7 @@ class DateColorScale(ColorScale):
     _model_name = Unicode('DateColorScaleModel').tag(sync=True)
 
 
-@register_scale('ipygg.OrdinalColorScale')
+@register_scale('bqscales.OrdinalColorScale')
 class OrdinalColorScale(ColorScale):
     """An ordinal color scale.
 
