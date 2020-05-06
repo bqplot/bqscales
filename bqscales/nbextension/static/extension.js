@@ -6,7 +6,7 @@ define(function() {
     window['requirejs'].config({
         map: {
             '*': {
-                'ipygg': 'nbextensions/ipygg/index',
+                'bqscales': 'nbextensions/bqscales/index',
             },
         }
     });

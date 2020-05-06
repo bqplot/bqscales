@@ -19,19 +19,19 @@ import {
   MODULE_NAME, MODULE_VERSION
 } from './version';
 
-const EXTENSION_ID = 'ipygg:plugin';
+const EXTENSION_ID = 'bqscales:plugin';
 
 /**
- * The ipygg plugin.
+ * The bqscales plugin.
  */
-const ipyggPlugin: IPlugin<Application<Widget>, void> = {
+const bqscalesPlugin: IPlugin<Application<Widget>, void> = {
   id: EXTENSION_ID,
   requires: [IJupyterWidgetRegistry],
   activate: activateWidgetExtension,
   autoStart: true
 };
 
-export default ipyggPlugin;
+export default bqscalesPlugin;
 
 
 /**

@@ -145,12 +145,12 @@ $RECYCLE.BIN/
 # ----
 
 **/node_modules/
-ipygg/nbextension/static/index.*
-ipygg/labextension/*.tgz
+bqscales/nbextension/static/index.*
+bqscales/labextension/*.tgz
 
 # Coverage data
 # -------------
 **/coverage/
 
 # Packed lab extensions
-ipygg/labextension
+bqscales/labextension

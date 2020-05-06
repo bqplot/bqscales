@@ -19,7 +19,7 @@ from setuptools import setup
 
 
 # The name of the project
-name = 'ipygg'
+name = 'bqscales'
 
 # Ensure a valid python version
 ensure_python('>=3.4')
@@ -44,10 +44,10 @@ package_data_spec = {
 }
 
 data_files_spec = [
-    ('share/jupyter/nbextensions/ipygg',
+    ('share/jupyter/nbextensions/bqscales',
         nb_path, '*.js*'),
     ('share/jupyter/lab/extensions', lab_path, '*.tgz'),
-    ('etc/jupyter/nbconfig/notebook.d' , HERE, 'ipygg.json')
+    ('etc/jupyter/nbconfig/notebook.d' , HERE, 'bqscales.json')
 ]
 
 
@@ -68,7 +68,7 @@ setup_args = dict(
     packages        = find_packages(),
     author          = 'QuantStack',
     author_email    = 'info@quantstack.net',
-    url             = 'https://github.com/QuantStack/ipygg',
+    url             = 'https://github.com/bqplot/bqscales',
     license         = 'BSD',
     platforms       = "Linux, Mac OS X, Windows",
     keywords        = ['Jupyter', 'Widgets', 'IPython'],

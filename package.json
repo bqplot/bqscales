@@ -1,5 +1,5 @@
 {
-  "name": "ipygg",
+  "name": "bqscales",
   "version": "0.1.0",
   "description": "Grammar of Graphics in Python",
   "keywords": [
@@ -12,9 +12,9 @@
     "lib/**/*.js",
     "dist/*.js"
   ],
-  "homepage": "https://github.com/QuantStack/ipygg",
+  "homepage": "https://github.com/bqplot/bqscales",
   "bugs": {
-    "url": "https://github.com/QuantStack/ipygg/issues"
+    "url": "https://github.com/bqplot/bqscales/issues"
   },
   "license": "BSD-3-Clause",
   "author": {
@@ -25,18 +25,18 @@
   "types": "./lib/index.d.ts",
   "repository": {
     "type": "git",
-    "url": "https://github.com/QuantStack/ipygg"
+    "url": "https://github.com/bqplot/bqscales"
   },
   "scripts": {
     "build": "npm run build:lib && npm run build:nbextension",
-    "build:labextension": "npm run clean:labextension && mkdirp ipygg/labextension && cd ipygg/labextension && npm pack ../..",
+    "build:labextension": "npm run clean:labextension && mkdirp bqscales/labextension && cd bqscales/labextension && npm pack ../..",
     "build:lib": "tsc",
     "build:nbextension": "webpack -p",
     "build:all": "npm run build:labextension && npm run build:nbextension",
     "clean": "npm run clean:lib && npm run clean:nbextension",
     "clean:lib": "rimraf lib",
-    "clean:labextension": "rimraf ipygg/labextension",
-    "clean:nbextension": "rimraf ipygg/nbextension/static/index.js",
+    "clean:labextension": "rimraf bqscales/labextension",
+    "clean:nbextension": "rimraf bqscales/nbextension/static/index.js",
     "prepack": "npm run build:lib",
     "test": "npm run test:chrome",
     "test:chrome": "karma start --browsers=Chrome tests/karma.conf.js",
