@@ -16,7 +16,7 @@
   "bugs": {
     "url": "https://github.com/bqplot/bqscales/issues"
   },
-  "license": "BSD-3-Clause",
+  "license": "Apache",
   "author": {
     "name": "QuantStack",
     "email": "info@quantstack.net"
