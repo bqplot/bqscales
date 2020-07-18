@@ -1,6 +1,6 @@
 # bqscales
 
-[![Build Status](https://travis-ci.org/bqplot/bqscales.svg?branch=master)](https://travis-ci.org/bqplot/bqscales)
+[![Build Status](https://travis-ci.com/bqplot/bqscales.svg?branch=master)](https://travis-ci.com/bqplot/bqscales)
 [![codecov](https://codecov.io/gh/bqplot/bqscales/branch/master/graph/badge.svg)](https://codecov.io/gh/bqplot/bqscales)
 
 
