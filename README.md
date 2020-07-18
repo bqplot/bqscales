@@ -27,3 +27,12 @@ the nbextension:
 ```bash
 jupyter nbextension enable --py [--sys-prefix|--user|--system] bqscales
 ```
+
+## Development
+
+See our [contributing guidelines](CONTRIBUTING.md) to know how to contribute and set up a development environment.
+
+## License
+
+This software is licensed under the Apache 2.0 license. See the [LICENSE](LICENSE) file for details.
+
