@@ -23,7 +23,7 @@ from setuptools import find_packages
 from jupyter_packaging import (
     create_cmdclass, install_npm, ensure_targets,
     combine_commands, ensure_python,
-    get_version
+    get_version, skip_if_exists
 )
 
 from setuptools import setup
