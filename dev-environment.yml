@@ -1,0 +1,13 @@
+name: bqscales-dev
+channels:
+    - conda-forge
+dependencies:
+    - pip
+    - yarn
+    - jupyter-packaging
+    - jupyterlab=2
+    - ipywidgets>=7.5
+    - flake8
+    - setuptools
+    - wheel
+    - twine

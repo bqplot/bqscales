@@ -20,6 +20,7 @@ def date_from_json(value, obj):
     else:
         return value
 
+
 date_serialization = dict(to_json=date_to_json, from_json=date_from_json)
 
 
