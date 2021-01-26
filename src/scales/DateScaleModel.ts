@@ -41,6 +41,12 @@ class DateScaleModel extends LinearScaleModel{
     this.updateDomain();
   }
 
+  typedRange(values: any[]) {
+    const ar: any = new Float64Array(values.map(Number));
+    ar.type = 'date';
+    return ar
+  }
+
   readonly type: string = 'date';
 
   protected globalMin: number | Date | null = (new Date()).setTime(0);

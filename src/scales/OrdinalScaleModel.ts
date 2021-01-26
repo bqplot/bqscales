@@ -97,6 +97,10 @@ class OrdinalScaleModel extends ScaleModel {
     this.setDomain(domain, id);
   }
 
+  typedRange(values: any[]) {
+    return new Int32Array(values.map(Number));
+  }
+
   private minFromData: boolean = true;
   private maxFromData: boolean = true;
 
