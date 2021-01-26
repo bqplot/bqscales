@@ -1,0 +1,52 @@
+name: Tests
+
+on:
+  push:
+    branches:
+    - master
+  pull_request:
+    branches:
+    - master
+
+defaults:
+  run:
+    shell: bash -l {0}
+
+jobs:
+  run:
+    runs-on: ${{ matrix.os }}
+
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest]
+        python-version: [3.8]
+
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v2
+
+    - name: Setup conda
+      uses: conda-incubator/setup-miniconda@v2
+      with:
+        activate-environment: bqscales-dev
+        environment-file: dev-environment.yml
+        python-version: ${{ matrix.python-version }}
+        mamba-version: "*"
+        auto-activate-base: false
+        channels: conda-forge
+
+    - name: Install bqscales
+      run: pip install .
+
+    - name: Check installation files
+      run: |
+        test -d $CONDA_PREFIX/share/jupyter/nbextensions/bqscales
+        test -f $CONDA_PREFIX/share/jupyter/nbextensions/bqscales/extension.js
+        test -f $CONDA_PREFIX/share/jupyter/nbextensions/bqscales/index.js
+
+    - name: Check nbextension
+      run: jupyter nbextension list 2>&1 | grep -ie "bqscales/extension.*enabled" -
+
+    - name: Test flake8
+      run: flake8 bqscales --ignore=E501,W504,W503
