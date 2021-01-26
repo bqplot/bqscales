@@ -129,6 +129,10 @@ class LinearScaleModel extends ScaleModel {
     this.setDomain([min, max], id);
   }
 
+  typedRange(values: any[]) {
+    return new Float64Array(values.map(Number));
+  }
+
   min: number | Date | null;
   max: number | Date | null;
 

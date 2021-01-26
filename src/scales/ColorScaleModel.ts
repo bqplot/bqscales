@@ -85,7 +85,7 @@ class ColorScaleModel extends LinearScaleModel {
       // @ts-ignore
       scale.domain([0, nColors - 1]).range([min, max]);
     } else {
-      const mid_index = nColors / 2;
+      const mid_index = (nColors - 1) / 2;
       // @ts-ignore
       scale.domain([0, mid_index, nColors - 1]).range([min, mid, max]);
     }
