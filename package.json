@@ -28,15 +28,14 @@
     "url": "https://github.com/bqplot/bqscales"
   },
   "scripts": {
-    "build": "npm run build:lib && npm run build:nbextension",
-    "build:labextension": "npm run clean:labextension && mkdirp bqscales/labextension && cd bqscales/labextension && npm pack ../..",
+    "build": "yarn run build:lib && yarn run build:nbextension && yarn run build:labextension",
     "build:lib": "tsc",
-    "build:nbextension": "webpack -p",
-    "build:all": "npm run build:labextension && npm run build:nbextension",
-    "clean": "npm run clean:lib && npm run clean:nbextension",
+    "build:nbextension": "webpack",
+    "build:labextension": "jupyter labextension build .",
+    "clean": "yarn run clean:lib && yarn run clean:nbextension && yarn run clean:labextension",
     "clean:lib": "rimraf lib",
-    "clean:labextension": "rimraf bqscales/labextension",
     "clean:nbextension": "rimraf bqscales/nbextension/static/index.js",
+    "clean:labextension": "rimraf bqscales/labextension",
     "prepack": "npm run build:lib",
     "test": "npm run test:chrome",
     "test:chrome": "karma start --browsers=Chrome tests/karma.conf.js",
@@ -48,7 +47,7 @@
     "watch:nbextension": "webpack --watch"
   },
   "dependencies": {
-    "@jupyter-widgets/base": "^2.0.2 || ^3",
+    "@jupyter-widgets/base": "^2.0.2 || ^3 || ^4.0.0",
     "@types/d3-array": "^2.0.0",
     "@types/d3-geo": "^1.11.1",
     "@types/d3-scale": "^2.1.1",
@@ -58,6 +57,7 @@
     "underscore": "^1.9.2"
   },
   "devDependencies": {
+    "@jupyterlab/builder": "^3.0.0",
     "@phosphor/application": "^1.7.3",
     "@phosphor/widgets": "^1.9.3",
     "@types/expect.js": "^0.3.29",
@@ -82,10 +82,17 @@
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.2.1",
     "typescript": "^3.7.5",
-    "webpack": "^4.20.2",
-    "webpack-cli": "^3.1.2"
+    "webpack": "^5",
+    "webpack-cli": "^4"
   },
   "jupyterlab": {
-    "extension": "lib/plugin"
+    "extension": "lib/plugin",
+    "outputDir": "bqscales/labextension",
+    "sharedPackages": {
+      "@jupyter-widgets/base": {
+        "bundled": false,
+        "singleton": true
+      }
+    }
   }
 }

@@ -5,8 +5,8 @@ dependencies:
     - pip
     - yarn
     - jupyter-packaging
-    - jupyterlab=2
-    - ipywidgets>=7.5
+    - jupyterlab=3
+    - ipywidgets>=7.6
     - flake8
     - setuptools
     - wheel

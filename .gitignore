@@ -144,13 +144,11 @@ $RECYCLE.BIN/
 # NPM
 # ----
 
+package-lock.json
 **/node_modules/
 bqscales/nbextension/static/index.*
-bqscales/labextension/*.tgz
+bqscales/labextension
 
 # Coverage data
 # -------------
 **/coverage/
-
-# Packed lab extensions
-bqscales/labextension

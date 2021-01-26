@@ -17,64 +17,71 @@
 
 from __future__ import print_function
 from glob import glob
-from os.path import join as pjoin
+from os import path
 
-
-from setupbase import (
+from setuptools import find_packages
+from jupyter_packaging import (
     create_cmdclass, install_npm, ensure_targets,
-    find_packages, combine_commands, ensure_python,
-    get_version, HERE
+    combine_commands, ensure_python,
+    get_version
 )
 
 from setuptools import setup
 
 
+HERE = path.dirname(path.abspath(__file__))
+
 # The name of the project
 name = 'bqscales'
 
 # Ensure a valid python version
-ensure_python('>=3.4')
+ensure_python('>=3.6')
 
 # Get our version
-version = get_version(pjoin(name, '_version.py'))
+version = get_version(path.join(name, '_version.py'))
 
-nb_path = pjoin(HERE, name, 'nbextension', 'static')
-lab_path = pjoin(HERE, name, 'labextension')
+nb_path = path.join(HERE, name, 'nbextension', 'static')
+lab_path = path.join(HERE, name, 'labextension')
 
 # Representative files that should exist after a successful build
 jstargets = [
-    pjoin(nb_path, 'index.js'),
-    pjoin(HERE, 'lib', 'plugin.js'),
+    path.join(nb_path, 'index.js'),
+    path.join(lab_path, 'package.json'),
 ]
 
 package_data_spec = {
     name: [
         'nbextension/static/*.*js*',
-        'labextension/*.tgz'
+        'labextension/**'
     ]
 }
 
 data_files_spec = [
-    ('share/jupyter/nbextensions/bqscales',
-        nb_path, '*.js*'),
-    ('share/jupyter/lab/extensions', lab_path, '*.tgz'),
+    ('share/jupyter/nbextensions/bqscales', nb_path, '*.js*'),
+    ('share/jupyter/labextensions/bqscales', lab_path, '**'),
     ('etc/jupyter/nbconfig/notebook.d' , HERE, 'bqscales.json')
 ]
 
 
 cmdclass = create_cmdclass('jsdeps', package_data_spec=package_data_spec,
     data_files_spec=data_files_spec)
-cmdclass['jsdeps'] = combine_commands(
-    install_npm(HERE, build_cmd='build:all'),
+js_command = combine_commands(
+    install_npm(HERE, npm=["yarn"], build_cmd='build'),
     ensure_targets(jstargets),
 )
+
+is_repo = path.exists(path.join(HERE, '.git'))
+if is_repo:
+    cmdclass['jsdeps'] = js_command
+else:
+    cmdclass['jsdeps'] = skip_if_exists(jstargets, js_command)
 
 
 setup_args = dict(
     name            = name,
     description     = 'Grammar of Graphics in Python',
     version         = version,
-    scripts         = glob(pjoin('scripts', '*')),
+    scripts         = glob(path.join('scripts', '*')),
     cmdclass        = cmdclass,
     packages        = find_packages(),
     author          = 'QuantStack',
@@ -89,10 +96,10 @@ setup_args = dict(
         'License :: OSI Approved :: Apache Software License',
         'Programming Language :: Python',
         'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.4',
-        'Programming Language :: Python :: 3.5',
         'Programming Language :: Python :: 3.6',
         'Programming Language :: Python :: 3.7',
+        'Programming Language :: Python :: 3.8',
+        'Programming Language :: Python :: 3.9',
         'Framework :: Jupyter',
     ],
     include_package_data = True,

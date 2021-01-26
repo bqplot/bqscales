@@ -37,16 +37,25 @@ jobs:
         channels: conda-forge
 
     - name: Install bqscales
-      run: pip install .
+      run: pip install -e .
 
     - name: Check installation files
       run: |
         test -d $CONDA_PREFIX/share/jupyter/nbextensions/bqscales
         test -f $CONDA_PREFIX/share/jupyter/nbextensions/bqscales/extension.js
         test -f $CONDA_PREFIX/share/jupyter/nbextensions/bqscales/index.js
+        test -d $CONDA_PREFIX/share/jupyter/labextensions/bqscales
+        test -f $CONDA_PREFIX/share/jupyter/labextensions/bqscales/package.json
 
-    - name: Check nbextension
-      run: jupyter nbextension list 2>&1 | grep -ie "bqscales/extension.*enabled" -
+    - name: Print nbextension and labextension
+      run: |
+        jupyter nbextension list
+        jupyter labextension list
+
+    - name: Check nbextension and labextension
+      run: |
+        jupyter nbextension list 2>&1 | grep -ie "bqscales/extension.*enabled" -
+        jupyter labextension list 2>&1 | grep -ie "bqscales.*enabled.*ok" -
 
     - name: Test flake8
       run: flake8 bqscales --ignore=E501,W504,W503
