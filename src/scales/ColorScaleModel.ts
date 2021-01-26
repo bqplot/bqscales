@@ -93,7 +93,7 @@ class ColorScaleModel extends LinearScaleModel {
     const domain = [];
     for (let i = 0; i < nColors; i++) {
       const j = this.reverse ? nColors-1-i : i;
-      domain.push(this.toDomainType(scale(j)));
+      domain.push(this.toDomainType(scale(j) as number));
     }
     return domain;
   }

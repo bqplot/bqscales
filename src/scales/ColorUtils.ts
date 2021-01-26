@@ -50,7 +50,7 @@ function cycleColors(colors: string[], count: number) {
 }
 
 export
-function cycleColorsFromScheme(scheme: string, numSteps: number) {
+function cycleColorsFromScheme(scheme: string, numSteps: number) : string[] {
   scheme = (scheme in colorbrewer) ? scheme : DEFAULT_SCHEME;
   const colorScheme = colorbrewer[scheme];
 
@@ -60,7 +60,7 @@ function cycleColorsFromScheme(scheme: string, numSteps: number) {
   if (numSteps === 2) {
     return [colorScheme['3'][0], colorScheme['3'][2]];
   } else if (colorIndex in colorScheme) {
-    return colorScheme[colorIndex];
+    return colorScheme[colorIndex] as string[];
   } else {
     colorIndex = getMaxIndex(colorScheme).toString();
 
@@ -98,6 +98,3 @@ export
 function getOrdinalScaleRange(scheme: string, numSteps: number) {
   return getOrdinalScale(scheme, numSteps).range();
 }
-
-
-
