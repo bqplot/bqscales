@@ -18,6 +18,7 @@ import * as _ from 'underscore';
 import * as d3Array from 'd3-array';
 import * as d3Scale from 'd3-scale';
 
+import { IModelOptions } from './ScaleModel';
 import {
   LinearScaleModel
 } from './LinearScaleModel';
@@ -38,6 +39,12 @@ class ColorScaleModel extends LinearScaleModel {
       extrapolation: 'constant',
       colors: null,
     };
+  }
+
+  initialize(attributes: Backbone.ObjectHash, options: IModelOptions) {
+    this.colorRange = [];
+
+    super.initialize(attributes, options);
   }
 
   protected setListeners() {
@@ -115,6 +122,6 @@ class ColorScaleModel extends LinearScaleModel {
 
   readonly type: string = 'color_linear';
 
-  colorRange: Array<number> = [];
+  colorRange: Array<number>;
   mid: DomainType | null = null;
 }

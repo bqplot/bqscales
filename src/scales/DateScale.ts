@@ -14,6 +14,7 @@
  */
 
 import * as d3Scale from 'd3-scale';
+import { DateScaleModel } from './DateScaleModel';
 
 import {
   LinearScale
@@ -32,4 +33,6 @@ class DateScale extends LinearScale {
   protected createD3Scale() {
     this.scale = d3Scale.scaleUtc();
   }
+
+  model: DateScaleModel;
 }
