@@ -16,6 +16,7 @@
 import * as d3Scale from 'd3-scale';
 
 import * as colurutils from './ColorUtils';
+import { OrdinalColorScaleModel } from './OrdinalColorScaleModel';
 
 import {
   Scale
@@ -50,4 +51,6 @@ class OrdinalColorScale extends Scale {
 
     this.setRange();
   }
+
+  model: OrdinalColorScaleModel;
 }

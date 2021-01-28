@@ -14,6 +14,7 @@
  */
 
 import * as d3Scale from 'd3-scale';
+import { LinearScaleModel } from './LinearScaleModel';
 
 import {
   Scale
@@ -63,4 +64,6 @@ class LinearScale extends Scale {
       return this.invert(pix);
     });
   }
+
+  model: LinearScaleModel;
 }

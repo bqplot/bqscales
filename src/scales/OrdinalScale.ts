@@ -21,6 +21,7 @@ import * as _ from 'underscore';
 import {
   Scale
 } from './Scale';
+import { OrdinalScaleModel } from './OrdinalScaleModel';
 
 
 export
@@ -89,4 +90,6 @@ class OrdinalScale extends Scale {
     });
     return filteredInd.map((ind) => { return domain[ind]; });
   }
+
+  model: OrdinalScaleModel;
 }

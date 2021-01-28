@@ -18,6 +18,7 @@ import * as d3Scale from 'd3-scale';
 import {
   LinearScale
 } from './LinearScale';
+import { LogScaleModel } from './LogScaleModel';
 
 
 export
@@ -33,5 +34,6 @@ class LogScale extends LinearScale {
   protected createD3Scale() {
     this.scale = d3Scale.scaleLog();
   }
-}
 
+  model: LogScaleModel;
+}

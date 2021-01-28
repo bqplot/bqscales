@@ -49,6 +49,9 @@ abstract class ScaleModel extends WidgetModel {
   initialize(attributes: Backbone.ObjectHash, options: IModelOptions) {
     super.initialize(attributes, options);
 
+    this.domains = {};
+    this.domain = [];
+
     this.setListeners();
   }
 
@@ -111,8 +114,8 @@ abstract class ScaleModel extends WidgetModel {
   protected setListeners(): void {};
 
   readonly type: string;
-  domain: any[] = [];
+  domain: any[];
 
-  protected domains: any = {};
+  protected domains: any;
   protected reverse: boolean;
 }
