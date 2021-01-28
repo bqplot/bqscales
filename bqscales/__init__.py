@@ -23,3 +23,10 @@ from .scales import (  # noqa
 from ._version import __version__, version_info  # noqa
 
 from .nbextension import _jupyter_nbextension_paths  # noqa
+
+
+def _jupyter_labextension_paths():
+    return [{
+        'src': 'labextension',
+        'dest': 'bqscales',
+    }]
