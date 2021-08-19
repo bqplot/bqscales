@@ -15,15 +15,12 @@
 
 import * as _ from 'underscore';
 
-import {
-  ScaleModel
-} from './ScaleModel';
+import { ScaleModel } from './ScaleModel';
 
-
-export
-class OrdinalScaleModel extends ScaleModel {
+export class OrdinalScaleModel extends ScaleModel {
   defaults() {
-    return {...super.defaults(),
+    return {
+      ...super.defaults(),
       _model_name: 'OrdinalScaleModel',
       _view_name: 'OrdinalScale',
       domain: [],
@@ -39,10 +36,12 @@ class OrdinalScaleModel extends ScaleModel {
 
   private domainChanged() {
     const domain = this.get('domain');
-    if(domain !== null && domain.length !== 0) {
+    if (domain !== null && domain.length !== 0) {
       this.maxFromData = false;
       this.minFromData = false;
-      this.domain = domain.map((d: any) => { return d; });
+      this.domain = domain.map((d: any) => {
+        return d;
+      });
       this.trigger('domain_changed');
     } else {
       this.maxFromData = true;
@@ -53,14 +52,14 @@ class OrdinalScaleModel extends ScaleModel {
   }
 
   private reverseChanged(model?: any) {
-    const prevReverse = (model === undefined) ? false : model.previous('reverse');
+    const prevReverse = model === undefined ? false : model.previous('reverse');
     this.reverse = this.get('reverse');
 
     // the domain should be reversed only if the previous value of reverse
     // is different from the current value. During init, domain should be
     // reversed only if reverse is set to True.
     const reverse_domain = (prevReverse + this.reverse) % 2;
-    if(this.domain.length > 0 && reverse_domain === 1) {
+    if (this.domain.length > 0 && reverse_domain === 1) {
       this.domain.reverse();
       this.trigger('domain_changed', this.domain);
     }
@@ -69,11 +68,13 @@ class OrdinalScaleModel extends ScaleModel {
   protected updateDomain() {
     let domain: any[] = [];
     // TODO: check for hasOwnProperty
-    for (let id in this.domains) {
+    for (const id in this.domains) {
       domain = _.union(domain, this.domains[id]);
     }
-    if(this.domain.length !== domain.length ||
-     (_.intersection(this.domain, domain)).length !== domain.length) {
+    if (
+      this.domain.length !== domain.length ||
+      _.intersection(this.domain, domain).length !== domain.length
+    ) {
       this.domain = domain;
       this.trigger('domain_changed', domain);
     }
@@ -83,15 +84,15 @@ class OrdinalScaleModel extends ScaleModel {
     // Takes an array and calculates the domain for the particular
     // view. If you have the domain already calculated on your side,
     // call setDomain function.
-    if(!this.minFromData && !this.maxFromData) {
+    if (!this.minFromData && !this.maxFromData) {
       return;
     }
-    if(array.length === 0) {
-     this.setDomain([], id);
-     return;
+    if (array.length === 0) {
+      this.setDomain([], id);
+      return;
     }
     const domain = _.flatten(array);
-    if(this.get('reverse')) {
+    if (this.get('reverse')) {
       domain.reverse();
     }
     this.setDomain(domain, id);
@@ -101,8 +102,8 @@ class OrdinalScaleModel extends ScaleModel {
     return new Int32Array(values.map(Number));
   }
 
-  private minFromData: boolean = true;
-  private maxFromData: boolean = true;
+  private minFromData = true;
+  private maxFromData = true;
 
   readonly type: string = 'ordinal';
 }

@@ -41,4 +41,4 @@ export * from './LogScaleModel';
 export * from './LogScale';
 
 export * from './GeoScaleModel';
-export * from './GeoScale'
+export * from './GeoScale';

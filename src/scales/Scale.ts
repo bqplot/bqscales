@@ -13,17 +13,11 @@
  * limitations under the License.
  */
 
-import {
-  WidgetView
-} from '@jupyter-widgets/base';
+import { WidgetView } from '@jupyter-widgets/base';
 
-import {
-  ScaleModel
-} from './ScaleModel';
+import { ScaleModel } from './ScaleModel';
 
-
-export
-abstract class Scale extends WidgetView {
+export abstract class Scale extends WidgetView {
   render() {
     this.offset = 0;
     this.createD3Scale();
@@ -36,7 +30,7 @@ abstract class Scale extends WidgetView {
     this.listenTo(this.model, 'unhighlight_axis', this.unhighlightAxis);
   }
 
-  setRange(range: any[], padding=undefined) {
+  setRange(range: any[], padding = undefined) {
     this.scale.range(range);
   }
 

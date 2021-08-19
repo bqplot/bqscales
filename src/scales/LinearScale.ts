@@ -16,16 +16,12 @@
 import * as d3Scale from 'd3-scale';
 import { LinearScaleModel } from './LinearScaleModel';
 
-import {
-  Scale
-} from './Scale';
+import { Scale } from './Scale';
 
-
-export
-class LinearScale extends Scale {
+export class LinearScale extends Scale {
   render() {
     super.render();
-    if(this.model.domain.length > 0) {
+    if (this.model.domain.length > 0) {
       this.scale.domain(this.model.domain);
     }
   }
@@ -49,9 +45,11 @@ class LinearScale extends Scale {
     unpaddedScale.clamp(false);
     unpaddedScale.domain(this.model.domain);
     unpaddedScale.range(oldRange);
-    this.scale.domain(newRange.map((limit) => {
-      return unpaddedScale.invert(limit);
-    }));
+    this.scale.domain(
+      newRange.map((limit) => {
+        return unpaddedScale.invert(limit);
+      })
+    );
   }
 
   invert(pixel: any): number {

@@ -13,24 +13,19 @@
  * limitations under the License.
  */
 
-import {
-  ColorScaleModel
-} from './ColorScaleModel';
+import { ColorScaleModel } from './ColorScaleModel';
 
-import {
-  convertToDate
-} from './LinearScaleModel';
+import { convertToDate } from './LinearScaleModel';
 
-
-export
-class DateColorScaleModel extends ColorScaleModel {
+export class DateColorScaleModel extends ColorScaleModel {
   defaults() {
-    return {...super.defaults(),
+    return {
+      ...super.defaults(),
       _model_name: 'DateColorScaleModel',
       _view_name: 'DateColorScale',
       min: null,
       max: null,
-      mid: null
+      mid: null,
     };
   }
 
@@ -38,18 +33,18 @@ class DateColorScaleModel extends ColorScaleModel {
     this.min = convertToDate(this.get('min'));
     this.max = convertToDate(this.get('max'));
 
-    this.minFromData = (this.min === null);
-    this.maxFromData = (this.max === null);
+    this.minFromData = this.min === null;
+    this.maxFromData = this.max === null;
 
     this.updateDomain();
   }
 
-  protected toDomainType(value: number) : Date {
+  protected toDomainType(value: number): Date {
     return new Date(value);
   }
 
   readonly type: string = 'date_color_linear';
 
-  protected globalMin: number | Date | null = (new Date()).setTime(0);
+  protected globalMin: number | Date | null = new Date().setTime(0);
   protected globalMax: number | Date | null = new Date();
 }

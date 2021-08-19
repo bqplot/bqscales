@@ -13,18 +13,15 @@
  * limitations under the License.
  */
 
-import {
-  LinearScaleModel
-} from './LinearScaleModel';
+import { LinearScaleModel } from './LinearScaleModel';
 
-
-export
-class LogScaleModel extends LinearScaleModel {
+export class LogScaleModel extends LinearScaleModel {
   defaults() {
-    return {...super.defaults(),
+    return {
+      ...super.defaults(),
       _model_name: 'LogScaleModel',
       _view_name: 'LogScale',
-      domain: []
+      domain: [],
     };
   }
 

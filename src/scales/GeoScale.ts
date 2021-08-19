@@ -15,17 +15,11 @@
 
 import * as d3Geo from 'd3-geo';
 
-import {
-  Scale
-} from './Scale';
+import { Scale } from './Scale';
 
-import {
-  GeoScaleModel
-} from './GeoScaleModel'
+import { GeoScaleModel } from './GeoScaleModel';
 
-
-export
-class GeoScale extends Scale {
+export class GeoScale extends Scale {
   render() {
     super.render();
     this.listenTo(this.model, 'attribute_changed', this.resetScale);
@@ -47,30 +41,16 @@ class GeoScale extends Scale {
   model: GeoScaleModel;
 }
 
+export class Mercator extends GeoScale {}
 
-export
-class Mercator extends GeoScale {}
+export class Albers extends GeoScale {}
 
+export class AlbersUSA extends GeoScale {}
 
-export
-class Albers extends GeoScale {}
+export class EquiRectangular extends GeoScale {}
 
+export class Orthographic extends GeoScale {}
 
-export
-class AlbersUSA extends GeoScale {}
+export class Gnomonic extends GeoScale {}
 
-
-export
-class EquiRectangular extends GeoScale {}
-
-
-export
-class Orthographic extends GeoScale {}
-
-
-export
-class Gnomonic extends GeoScale {}
-
-
-export
-class Stereographic extends GeoScale {}
+export class Stereographic extends GeoScale {}

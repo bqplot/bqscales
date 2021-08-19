@@ -15,14 +15,10 @@
 
 import * as d3Scale from 'd3-scale';
 
-import {
-  ColorScale
-} from './ColorScale';
+import { ColorScale } from './ColorScale';
 import { DateColorScaleModel } from './DateColorScaleModel';
 
-
-export
-class DateColorScale extends ColorScale {
+export class DateColorScale extends ColorScale {
   protected createD3Scale() {
     this.scale = d3Scale.scaleUtc();
   }
