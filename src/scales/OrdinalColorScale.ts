@@ -18,14 +18,10 @@ import * as d3Scale from 'd3-scale';
 import * as colurutils from './ColorUtils';
 import { OrdinalColorScaleModel } from './OrdinalColorScaleModel';
 
-import {
-  Scale
-} from './Scale';
+import { Scale } from './Scale';
 
-
-export
-class OrdinalColorScale extends Scale {
-  render(){
+export class OrdinalColorScale extends Scale {
+  render() {
     super.render();
 
     this.scale.domain(this.model.domain);
@@ -39,9 +35,19 @@ class OrdinalColorScale extends Scale {
 
   setRange() {
     if (this.model.get('colors').length > 0) {
-      this.scale.range(colurutils.cycleColors(this.model.get('colors'), this.scale.domain().length));
+      this.scale.range(
+        colurutils.cycleColors(
+          this.model.get('colors'),
+          this.scale.domain().length
+        )
+      );
     } else {
-      this.scale.range(colurutils.getOrdinalScaleRange(this.model.get('scheme'), this.scale.domain().length));
+      this.scale.range(
+        colurutils.getOrdinalScaleRange(
+          this.model.get('scheme'),
+          this.scale.domain().length
+        )
+      );
     }
     this.trigger('color_scale_range_changed');
   }

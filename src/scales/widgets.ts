@@ -35,10 +35,22 @@ export { LogScaleModel } from './LogScaleModel';
 export { LogScale } from './LogScale';
 
 export {
-  GeoScaleModel, MercatorModel, AlbersModel, AlbersUSAModel, GnomonicModel,
-  OrthographicModel, StereographicModel, EquiRectangularModel
+  GeoScaleModel,
+  MercatorModel,
+  AlbersModel,
+  AlbersUSAModel,
+  GnomonicModel,
+  OrthographicModel,
+  StereographicModel,
+  EquiRectangularModel,
 } from './GeoScaleModel';
 export {
-  GeoScale, Mercator, Albers, AlbersUSA, Gnomonic,
-  Orthographic, Stereographic, EquiRectangular
-} from './GeoScale'
+  GeoScale,
+  Mercator,
+  Albers,
+  AlbersUSA,
+  Gnomonic,
+  Orthographic,
+  Stereographic,
+  EquiRectangular,
+} from './GeoScale';

@@ -18,14 +18,10 @@ import * as d3Array from 'd3-array';
 
 import * as _ from 'underscore';
 
-import {
-  Scale
-} from './Scale';
+import { Scale } from './Scale';
 import { OrdinalScaleModel } from './OrdinalScaleModel';
 
-
-export
-class OrdinalScale extends Scale {
+export class OrdinalScale extends Scale {
   render() {
     super.render();
     this.scale.domain(this.model.domain);
@@ -35,11 +31,12 @@ class OrdinalScale extends Scale {
     this.scale = d3Scale.scaleBand();
   }
 
-  setRange(range: any[], padding: number = 0) {
+  setRange(range: any[], padding = 0) {
     this.scale.range(range);
     this.scale.paddingInner(padding);
     this.scale.paddingOuter(padding / 2.0);
-    this.offset = (this.scale.domain().length === 0) ? 0 : this.scale.bandwidth() / 2.0;
+    this.offset =
+      this.scale.domain().length === 0 ? 0 : this.scale.bandwidth() / 2.0;
   }
 
   expandDomain(oldRange: any[], newRange: any[]) {
@@ -54,8 +51,10 @@ class OrdinalScale extends Scale {
 
     const unpaddedScale = this.scale.copy();
     unpaddedScale.range(oldRange).paddingInner(0).paddingOuter(0);
-    const outerPadding = (unpaddedScale.range().length > 0) ?
-      Math.abs((newRange[1] - oldRange[1]) / unpaddedScale.bandwidth()) : 0;
+    const outerPadding =
+      unpaddedScale.range().length > 0
+        ? Math.abs((newRange[1] - oldRange[1]) / unpaddedScale.bandwidth())
+        : 0;
     this.scale.range(newRange);
     this.scale.paddingInner(0.0);
     this.scale.paddingOuter(outerPadding);
@@ -81,14 +80,15 @@ class OrdinalScale extends Scale {
     //pixels should be a non-decreasing two element array
     const domain = this.scale.domain();
     const pixelVals = domain.map((d: any) => {
-        return this.scale(d) + this.scale.bandwidth() / 2;
+      return this.scale(d) + this.scale.bandwidth() / 2;
     });
     const indices = _.range(pixelVals.length);
     const filteredInd = indices.filter((ind) => {
-      return (pixelVals[ind] >= pixels[0] &&
-              pixelVals[ind] <= pixels[1]);
+      return pixelVals[ind] >= pixels[0] && pixelVals[ind] <= pixels[1];
     });
-    return filteredInd.map((ind) => { return domain[ind]; });
+    return filteredInd.map((ind) => {
+      return domain[ind];
+    });
   }
 
   model: OrdinalScaleModel;

@@ -13,6 +13,8 @@
  * limitations under the License.
  */
 
-(window as any).__webpack_public_path__ = document.querySelector('body')!.getAttribute('data-base-url') + 'nbextensions/bqscales';
+(window as any).__webpack_public_path__ =
+  document.querySelector('body')!.getAttribute('data-base-url') +
+  'nbextensions/bqscales';
 
 export * from './index';

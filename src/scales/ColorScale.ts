@@ -15,28 +15,22 @@
 
 import * as d3Scale from 'd3-scale';
 
-import {
-  Scale
-} from './Scale';
+import { Scale } from './Scale';
 
-import {
-  ColorScaleModel
-} from './ColorScaleModel';
+import { ColorScaleModel } from './ColorScaleModel';
 
-
-export
-class ColorScale extends Scale {
-  render(){
+export class ColorScale extends Scale {
+  render() {
     super.render();
 
     this.updateExtrapolation();
-    if(this.model.domain.length > 0) {
-        this.scale.domain(this.model.domain);
+    if (this.model.domain.length > 0) {
+      this.scale.domain(this.model.domain);
     }
     this.setRange();
   }
 
-  protected createD3Scale(){
+  protected createD3Scale() {
     this.scale = d3Scale.scaleLinear();
   }
 
@@ -51,7 +45,7 @@ class ColorScale extends Scale {
   }
 
   updateExtrapolation() {
-    this.scale.clamp((this.model.get('extrapolation') === 'constant'));
+    this.scale.clamp(this.model.get('extrapolation') === 'constant');
   }
 
   setRange() {
@@ -62,4 +56,3 @@ class ColorScale extends Scale {
   // Overriding super class
   model: ColorScaleModel;
 }
-

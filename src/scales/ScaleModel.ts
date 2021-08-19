@@ -13,36 +13,28 @@
  * limitations under the License.
  */
 
-import {
-  ManagerBase, WidgetModel
-} from '@jupyter-widgets/base';
+import { ManagerBase, WidgetModel } from '@jupyter-widgets/base';
 
-import {
-  MODULE_NAME, SEMVER_RANGE
-} from '../version';
+import { MODULE_NAME, SEMVER_RANGE } from '../version';
 
-
-export
-interface IModelOptions
-{
+export interface IModelOptions {
   model_id: string;
   comm?: any;
   widget_manager: ManagerBase<any>;
 }
 
-
-export
-abstract class ScaleModel extends WidgetModel {
+export abstract class ScaleModel extends WidgetModel {
   defaults() {
-    return {...super.defaults(),
+    return {
+      ...super.defaults(),
       _model_name: 'ScaleModel',
-       _view_name: 'Scale',
+      _view_name: 'Scale',
       _model_module: MODULE_NAME,
       _view_module: MODULE_NAME,
       _model_module_version: SEMVER_RANGE,
       _view_module_version: SEMVER_RANGE,
       reverse: false,
-      allow_padding: true
+      allow_padding: true,
     };
   }
 
@@ -64,7 +56,7 @@ abstract class ScaleModel extends WidgetModel {
   }
 
   delDomain(domain: any[], id: string) {
-    if(this.domains[id] !== undefined) {
+    if (this.domains[id] !== undefined) {
       delete this.domains[id];
       this.updateDomain();
     }
@@ -84,7 +76,7 @@ abstract class ScaleModel extends WidgetModel {
 
   convertToDate(elem: any) {
     // Function to convert the string to a date element
-    if(elem === undefined || elem === null) {
+    if (elem === undefined || elem === null) {
       return null;
     }
     return new Date(elem);
@@ -92,7 +84,7 @@ abstract class ScaleModel extends WidgetModel {
 
   convertToJson(elem: any) {
     // converts the date to a json compliant format
-    if(elem === undefined || elem === null) {
+    if (elem === undefined || elem === null) {
       return null;
     } else {
       if (elem.toJSON === undefined) {
@@ -108,10 +100,10 @@ abstract class ScaleModel extends WidgetModel {
     }
   }
 
-  computeAndSetDomain(array: any[], id: string): void {};
-  protected updateDomain(): void {};
+  computeAndSetDomain(array: any[], id: string): void {}
+  protected updateDomain(): void {}
 
-  protected setListeners(): void {};
+  protected setListeners(): void {}
 
   readonly type: string;
   domain: any[];

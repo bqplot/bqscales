@@ -16,16 +16,12 @@
 import * as d3Scale from 'd3-scale';
 import { DateScaleModel } from './DateScaleModel';
 
-import {
-  LinearScale
-} from './LinearScale';
+import { LinearScale } from './LinearScale';
 
-
-export
-class DateScale extends LinearScale {
+export class DateScale extends LinearScale {
   render() {
     super.render();
-    if(this.model.domain.length > 0) {
+    if (this.model.domain.length > 0) {
       this.scale.domain(this.model.domain);
     }
   }

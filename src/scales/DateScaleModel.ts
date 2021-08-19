@@ -13,17 +13,12 @@
  * limitations under the License.
  */
 
-import * as _ from 'underscore';
+import { LinearScaleModel, convertToDate } from './LinearScaleModel';
 
-import {
-  LinearScaleModel, convertToDate
-} from './LinearScaleModel';
-
-
-export
-class DateScaleModel extends LinearScaleModel{
+export class DateScaleModel extends LinearScaleModel {
   defaults() {
-    return {...super.defaults(),
+    return {
+      ...super.defaults(),
       _model_name: 'DateScaleModel',
       _view_name: 'DateScale',
       min: null,
@@ -35,8 +30,8 @@ class DateScaleModel extends LinearScaleModel{
     this.min = convertToDate(this.get('min'));
     this.max = convertToDate(this.get('max'));
 
-    this.minFromData = (this.min === null);
-    this.maxFromData = (this.max === null);
+    this.minFromData = this.min === null;
+    this.maxFromData = this.max === null;
 
     this.updateDomain();
   }
@@ -44,11 +39,11 @@ class DateScaleModel extends LinearScaleModel{
   typedRange(values: any[]) {
     const ar: any = new Float64Array(values.map(Number));
     ar.type = 'date';
-    return ar
+    return ar;
   }
 
   readonly type: string = 'date';
 
-  protected globalMin: number | Date | null = (new Date()).setTime(0);
+  protected globalMin: number | Date | null = new Date().setTime(0);
   protected globalMax: number | Date | null = new Date();
 }

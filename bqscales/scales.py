@@ -51,7 +51,7 @@ def register_scale(key=None):
 
     If no key is provided, the class name is used as a key. A key is
     provided for each core bqscales scale type so that the frontend can use
-    this key regardless of the kernal language.
+    this key regardless of the kernel language.
     """
     def wrap(scale):
         label = key if key is not None else scale.__module__ + scale.__name__
@@ -124,7 +124,7 @@ class Mercator(GeoScale):
     rotate: tuple (default: (0, 0))
         Degree of rotation in each axis.
     rtype: (Number, Number) (class-level attribute)
-        This attribute should not be modifed. The range type of a geo
+        This attribute should not be modified. The range type of a geo
         scale is a tuple.
     dtype: type (class-level attribute)
         the associated data type / domain type
@@ -161,7 +161,7 @@ class Albers(GeoScale):
         Specifies the threshold for the projections adaptive resampling to the
         specified value in pixels.
     rtype: (Number, Number) (class-level attribute)
-        This attribute should not be modifed. The range type of a geo
+        This attribute should not be modified. The range type of a geo
         scale is a tuple.
     dtype: type (class-level attribute)
         the associated data type / domain type
@@ -188,7 +188,7 @@ class AlbersUSA(GeoScale):
         Specifies the scale value for the projection
     translate: tuple (default: (600, 490))
     rtype: (Number, Number) (class-level attribute)
-        This attribute should not be modifed. The range type of a geo
+        This attribute should not be modified. The range type of a geo
         scale is a tuple.
     dtype: type (class-level attribute)
         the associated data type / domain type
@@ -330,7 +330,7 @@ class LinearScale(Scale):
     max: float or None (default: None)
         if not None, max is the maximal value of the domain
     rtype: string (class-level attribute)
-        This attribute should not be modifed. The range type of a linear
+        This attribute should not be modified. The range type of a linear
         scale is numerical.
     dtype: type (class-level attribute)
         the associated data type / domain type
@@ -380,7 +380,7 @@ class LogScale(Scale):
     max: float or None (default: None)
         if not None, max is the maximal value of the domain
     rtype: string (class-level attribute)
-        This attribute should not be modifed by the user.
+        This attribute should not be modified by the user.
         The range type of a linear scale is numerical.
     dtype: type (class-level attribute)
         the associated data type / domain type
@@ -410,7 +410,7 @@ class DateScale(Scale):
     domain_class: type (default: Date)
          traitlet type used to validate values in of the domain of the scale.
     rtype: string (class-level attribute)
-        This attribute should not be modifed by the user.
+        This attribute should not be modified by the user.
         The range type of a linear scale is numerical.
     dtype: type (class-level attribute)
         the associated data type / domain type
@@ -437,7 +437,7 @@ class OrdinalScale(Scale):
     domain: list (default: [])
         The discrete values mapped by the ordinal scale
     rtype: string (class-level attribute)
-        This attribute should not be modifed by the user.
+        This attribute should not be modified by the user.
         The range type of a linear scale is numerical.
     dtype: type (class-level attribute)
         the associated data type / domain type
@@ -474,7 +474,7 @@ class ColorScale(Scale):
     extrapolation: {'constant', 'linear'} (default: 'constant')
         How to extrapolate values outside the [min, max] domain.
     rtype: string (class-level attribute)
-        The range type of a color scale is 'Color'. This should not be modifed.
+        The range type of a color scale is 'Color'. This should not be modified.
     dtype: type (class-level attribute)
         the associated data type / domain type
     """
@@ -509,7 +509,7 @@ class DateColorScale(ColorScale):
     mid: Date or None (default: None)
         if not None, mid is the value corresponding to the mid color.
     rtype: string (class-level attribute)
-        This attribute should not be modifed by the user.
+        This attribute should not be modified by the user.
         The range type of a color scale is 'Color'.
     dtype: type (class-level attribute)
         the associated data type / domain type
@@ -537,7 +537,7 @@ class OrdinalColorScale(ColorScale):
     domain: list (default: [])
         The discrete values mapped by the ordinal scales.
     rtype: string (class-level attribute)
-        This attribute should not be modifed by the user.
+        This attribute should not be modified by the user.
         The range type of a color scale is 'color'.
     dtype: type (class-level attribute)
         the associated data type / domain type

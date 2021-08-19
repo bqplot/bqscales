@@ -4,7 +4,7 @@ const version = require('./package.json').version;
 // Custom webpack rules
 const rules = [
   { test: /\.ts$/, loader: 'ts-loader' },
-  { test: /\.js$/, loader: 'source-map-loader' }
+  { test: /\.js$/, loader: 'source-map-loader' },
 ];
 
 // Packages that shouldn't be bundled but loaded at runtime
@@ -12,7 +12,7 @@ const externals = ['@jupyter-widgets/base'];
 
 const resolve = {
   // Add '.ts' and '.tsx' as resolvable extensions.
-  extensions: [".webpack.js", ".web.js", ".ts", ".js"]
+  extensions: ['.webpack.js', '.web.js', '.ts', '.js'],
 };
 
 module.exports = [
@@ -28,10 +28,10 @@ module.exports = [
       filename: 'index.js',
       path: path.resolve(__dirname, 'bqscales', 'nbextension', 'static'),
       libraryTarget: 'amd',
-      publicPath: ''
+      publicPath: '',
     },
     module: {
-      rules: rules
+      rules: rules,
     },
     devtool: 'source-map',
     externals,
@@ -51,40 +51,17 @@ module.exports = [
   {
     entry: './src/index.ts',
     output: {
-        filename: 'index.js',
-        path: path.resolve(__dirname, 'dist'),
-        libraryTarget: 'amd',
-        library: "bqscales",
-        publicPath: 'https://unpkg.com/bqscales@' + version + '/dist/'
+      filename: 'index.js',
+      path: path.resolve(__dirname, 'dist'),
+      libraryTarget: 'amd',
+      library: 'bqscales',
+      publicPath: 'https://unpkg.com/bqscales@' + version + '/dist/',
     },
     devtool: 'source-map',
     module: {
-        rules: rules
+      rules: rules,
     },
     externals,
     resolve,
   },
-
-
-  /**
-   * Documentation widget bundle
-   *
-   * This bundle is used to embed widgets in the package documentation.
-   */
-  {
-    entry: './src/index.ts',
-    output: {
-      filename: 'embed-bundle.js',
-      path: path.resolve(__dirname, 'docs', 'source', '_static'),
-      library: "bqscales",
-      libraryTarget: 'amd'
-    },
-    module: {
-      rules: rules
-    },
-    devtool: 'source-map',
-    externals,
-    resolve,
-  }
-
 ];
