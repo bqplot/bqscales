@@ -15,11 +15,12 @@
 
 import * as d3Geo from 'd3-geo';
 
-import { Scale } from './Scale';
+import { WidgetView } from '@jupyter-widgets/base';
 
 import { GeoScaleModel } from './GeoScaleModel';
 
-export class GeoScale extends Scale {
+// TODO Inherit from Scale??
+export class GeoScale extends WidgetView {
   render() {
     super.render();
     this.listenTo(this.model, 'attribute_changed', this.resetScale);

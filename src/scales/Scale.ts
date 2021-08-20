@@ -13,7 +13,9 @@
  * limitations under the License.
  */
 
-import { WidgetView } from '@jupyter-widgets/base';
+import * as d3Scale from 'd3-scale';
+
+import { WidgetModel, WidgetView } from '@jupyter-widgets/base';
 
 import { ScaleModel } from './ScaleModel';
 
@@ -30,7 +32,7 @@ export abstract class Scale extends WidgetView {
     this.listenTo(this.model, 'unhighlight_axis', this.unhighlightAxis);
   }
 
-  setRange(range: any[], padding = undefined) {
+  setRange(range: [number, number], padding = undefined) {
     this.scale.range(range);
   }
 
@@ -42,7 +44,7 @@ export abstract class Scale extends WidgetView {
     this.model.setDomain(array, id);
   }
 
-  expandDomain(oldRange: any[], newRange: any[]) {
+  expandDomain(oldRange: [number, number], newRange: [number, number]) {
     // Base class function. No implementation.
     // Implementation is particular to the child class
     // if you have a current range and then a new range and want to
@@ -66,8 +68,12 @@ export abstract class Scale extends WidgetView {
   protected abstract createD3Scale(): any;
 
   offset: number;
-  scale: any;
+  scale:
+    | d3Scale.ScaleTime<Date, number>
+    | d3Scale.ScaleOrdinal<string, number>
+    | d3Scale.ScaleBand<string>
+    | d3Scale.ScaleLinear<number, number>
+    | d3Scale.ScaleLogarithmic<number, number>;
 
-  // Overriding super class
-  model: ScaleModel;
+  model: WidgetModel & ScaleModel;
 }

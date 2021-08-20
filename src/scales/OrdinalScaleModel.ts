@@ -98,8 +98,8 @@ export class OrdinalScaleModel extends ScaleModel {
     this.setDomain(domain, id);
   }
 
-  typedRange(values: any[]) {
-    return new Int32Array(values.map(Number));
+  typedRange(values: number[]) {
+    return values;
   }
 
   private minFromData = true;

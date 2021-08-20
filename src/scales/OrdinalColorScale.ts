@@ -15,7 +15,7 @@
 
 import * as d3Scale from 'd3-scale';
 
-import * as colurutils from './ColorUtils';
+import * as colorutils from './ColorUtils';
 import { OrdinalColorScaleModel } from './OrdinalColorScaleModel';
 
 import { Scale } from './Scale';
@@ -36,14 +36,14 @@ export class OrdinalColorScale extends Scale {
   setRange() {
     if (this.model.get('colors').length > 0) {
       this.scale.range(
-        colurutils.cycleColors(
+        colorutils.cycleColors(
           this.model.get('colors'),
           this.scale.domain().length
         )
       );
     } else {
       this.scale.range(
-        colurutils.getOrdinalScaleRange(
+        colorutils.getOrdinalScaleRange(
           this.model.get('scheme'),
           this.scale.domain().length
         )
@@ -58,5 +58,6 @@ export class OrdinalColorScale extends Scale {
     this.setRange();
   }
 
+  scale: d3Scale.ScaleOrdinal<string, number>;
   model: OrdinalColorScaleModel;
 }

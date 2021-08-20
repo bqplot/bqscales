@@ -31,7 +31,7 @@ export class ColorScale extends Scale {
   }
 
   protected createD3Scale() {
-    this.scale = d3Scale.scaleLinear();
+    this.scale = d3Scale.scaleLinear() as d3Scale.ScaleLinear<number, number>;
   }
 
   protected createEventListeners() {
@@ -53,6 +53,10 @@ export class ColorScale extends Scale {
     this.trigger('color_scale_range_changed');
   }
 
-  // Overriding super class
+  scale: d3Scale.ScaleLinear<number, number> | d3Scale.ScaleTime<Date, number>;
   model: ColorScaleModel;
+}
+
+export function isColorScale(scale: Scale): scale is ColorScale {
+  return scale.model.type === 'color_linear';
 }
