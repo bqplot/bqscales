@@ -78,19 +78,18 @@ else:
 
 
 setup_args = dict(
-    name            = name,
-    description     = 'Grammar of Graphics in Python',
-    version         = version,
-    scripts         = glob(path.join('scripts', '*')),
-    cmdclass        = cmdclass,
-    packages        = find_packages(),
-    author          = 'QuantStack',
-    author_email    = 'info@quantstack.net',
-    url             = 'https://github.com/bqplot/bqscales',
-    license         = 'Apache',
-    platforms       = "Linux, Mac OS X, Windows",
-    keywords        = ['Jupyter', 'Widgets', 'IPython'],
-    classifiers     = [
+    name=name,
+    description='Grammar of Graphics in Python',
+    version=version,
+    scripts=glob(path.join('scripts', '*')),
+    cmdclass=cmdclass,
+    packages=find_packages(),
+    author='Bqplot development team',
+    url='https://github.com/bqplot/bqscales',
+    license='Apache',
+    platforms="Linux, Mac OS X, Windows",
+    keywords=['Jupyter', 'Widgets', 'IPython'],
+    classifiers=[
         'Intended Audience :: Developers',
         'Intended Audience :: Science/Research',
         'License :: OSI Approved :: Apache Software License',
@@ -102,12 +101,12 @@ setup_args = dict(
         'Programming Language :: Python :: 3.9',
         'Framework :: Jupyter',
     ],
-    include_package_data = True,
-    install_requires = [
+    include_package_data=True,
+    install_requires=[
         'ipywidgets>=7.5.0',
         'numpy',
     ],
-    extras_require = {
+    extras_require={
         'test': [
             'pytest>=3.6',
             'pytest-cov',
@@ -127,7 +126,7 @@ setup_args = dict(
             'pypandoc',
         ],
     },
-    entry_points = {
+    entry_points={
     },
 )
 
