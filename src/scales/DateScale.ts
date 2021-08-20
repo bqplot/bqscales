@@ -14,9 +14,10 @@
  */
 
 import * as d3Scale from 'd3-scale';
-import { DateScaleModel } from './DateScaleModel';
 
+import { Scale } from './Scale';
 import { LinearScale } from './LinearScale';
+import { DateScaleModel } from './DateScaleModel';
 
 export class DateScale extends LinearScale {
   render() {
@@ -31,4 +32,8 @@ export class DateScale extends LinearScale {
   }
 
   model: DateScaleModel;
+}
+
+export function isDateScale(scale: Scale): scale is DateScale {
+  return scale.model.type === 'date';
 }

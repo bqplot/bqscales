@@ -14,9 +14,9 @@
  */
 
 import * as d3Scale from 'd3-scale';
-import { LinearScaleModel } from './LinearScaleModel';
 
 import { Scale } from './Scale';
+import { LinearScaleModel } from './LinearScaleModel';
 
 export class LinearScale extends Scale {
   render() {
@@ -64,4 +64,8 @@ export class LinearScale extends Scale {
   }
 
   model: LinearScaleModel;
+}
+
+export function isLinearScale(scale: Scale): scale is LinearScale {
+  return scale.model.type === 'linear';
 }

@@ -93,3 +93,7 @@ export class OrdinalScale extends Scale {
 
   model: OrdinalScaleModel;
 }
+
+export function isOrdinalScale(scale: Scale): scale is OrdinalScale {
+  return scale.model.type === 'ordinal';
+}
