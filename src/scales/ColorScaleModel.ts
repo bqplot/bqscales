@@ -135,6 +135,6 @@ export class ColorScaleModel extends LinearScaleModel {
 
   readonly type: string = 'color_linear';
 
-  colorRange: Array<number>;
+  colorRange: number[];
   mid: DomainType | null = null;
 }

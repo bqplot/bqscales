@@ -24,6 +24,7 @@ export class DateColorScale extends ColorScale {
     this.scale = d3Scale.scaleUtc();
   }
 
+  scale: d3Scale.ScaleTime<Date, number>;
   model: DateColorScaleModel;
 }
 

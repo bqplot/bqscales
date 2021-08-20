@@ -31,6 +31,7 @@ export class DateScale extends LinearScale {
     this.scale = d3Scale.scaleUtc();
   }
 
+  scale: d3Scale.ScaleTime<Date, number>;
   model: DateScaleModel;
 }
 

@@ -27,7 +27,7 @@ export class LinearScale extends Scale {
   }
 
   protected createD3Scale() {
-    this.scale = d3Scale.scaleLinear();
+    this.scale = d3Scale.scaleLinear() as d3Scale.ScaleLinear<number, number>;
   }
 
   expandDomain(oldRange: any[], newRange: any[]) {
@@ -52,7 +52,7 @@ export class LinearScale extends Scale {
     );
   }
 
-  invert(pixel: any): number {
+  invert(pixel: any): number | Date {
     return this.scale.invert(pixel);
   }
 
@@ -63,6 +63,10 @@ export class LinearScale extends Scale {
     });
   }
 
+  scale:
+    | d3Scale.ScaleLinear<number, number>
+    | d3Scale.ScaleTime<Date, number>
+    | d3Scale.ScaleLogarithmic<number, number>;
   model: LinearScaleModel;
 }
 

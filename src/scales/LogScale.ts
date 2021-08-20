@@ -32,6 +32,7 @@ export class LogScale extends LinearScale {
     this.scale = d3Scale.scaleLog();
   }
 
+  scale: d3Scale.ScaleLogarithmic<number, number>;
   model: LogScaleModel;
 }
 

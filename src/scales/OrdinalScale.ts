@@ -31,7 +31,7 @@ export class OrdinalScale extends Scale {
     this.scale = d3Scale.scaleBand();
   }
 
-  setRange(range: any[], padding = 0) {
+  setRange(range: [number, number], padding = 0) {
     this.scale.range(range);
     this.scale.paddingInner(padding);
     this.scale.paddingOuter(padding / 2.0);
@@ -39,7 +39,7 @@ export class OrdinalScale extends Scale {
       this.scale.domain().length === 0 ? 0 : this.scale.bandwidth() / 2.0;
   }
 
-  expandDomain(oldRange: any[], newRange: any[]) {
+  expandDomain(oldRange: [number, number], newRange: [number, number]) {
     // If you have a current range and then a new range and want to
     // expand the domain to expand to the new range but keep it
     // consistent with the previous one, this is the function you use.
@@ -65,22 +65,22 @@ export class OrdinalScale extends Scale {
     // value passed. If the pixel is outside the range of the scale,
     const domain = this.scale.domain();
 
-    const pixelVals = domain.map((d: any) => {
-      return this.scale(d) + this.scale.bandwidth() / 2;
+    const pixelVals = domain.map((d) => {
+      return (this.scale(d) as number) + this.scale.bandwidth() / 2;
     });
-    const abs_diff = pixelVals.map((d: any) => {
+    const abs_diff = pixelVals.map((d) => {
       return Math.abs(pixel - d);
     });
 
-    return domain[abs_diff.indexOf(d3Array.min(abs_diff))];
+    return domain[abs_diff.indexOf(d3Array.min(abs_diff) as number)];
   }
 
-  invertRange(pixels: any[]) {
+  invertRange(pixels: [number, number]) {
     //return all the indices between a range
     //pixels should be a non-decreasing two element array
     const domain = this.scale.domain();
-    const pixelVals = domain.map((d: any) => {
-      return this.scale(d) + this.scale.bandwidth() / 2;
+    const pixelVals = domain.map((d) => {
+      return (this.scale(d) as number) + this.scale.bandwidth() / 2;
     });
     const indices = _.range(pixelVals.length);
     const filteredInd = indices.filter((ind) => {
@@ -91,6 +91,7 @@ export class OrdinalScale extends Scale {
     });
   }
 
+  scale: d3Scale.ScaleBand<string>;
   model: OrdinalScaleModel;
 }
 

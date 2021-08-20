@@ -31,7 +31,7 @@ function getMaxIndex(colorObject: ColorScheme): number {
   return maxIndex;
 }
 
-export function cycleColors(colors: string[], count: number) {
+export function cycleColors(colors: string[], count: number): any {
   const colorsLen = colors.length;
   if (colorsLen > count) {
     return colors.slice(0, count);
@@ -67,7 +67,7 @@ export function cycleColorsFromScheme(
   }
 }
 
-export function getLinearScale(scheme: string) {
+export function getLinearScale(scheme: string): any {
   scheme =
     scheme in colorbrewer && !(colorbrewer[scheme]['type'] === 'qual')
       ? scheme
@@ -82,16 +82,16 @@ export function getLinearScale(scheme: string) {
   return scale;
 }
 
-export function getOrdinalScale(scheme: string, numSteps: number) {
+export function getOrdinalScale(scheme: string, numSteps: number): any {
   const scale = d3Scale.scaleOrdinal();
   scale.range(cycleColorsFromScheme(scheme, numSteps));
   return scale;
 }
 
-export function getLinearScaleRange(scheme: string) {
+export function getLinearScaleRange(scheme: string): any {
   return getLinearScale(scheme).range();
 }
 
-export function getOrdinalScaleRange(scheme: string, numSteps: number) {
+export function getOrdinalScaleRange(scheme: string, numSteps: number): any {
   return getOrdinalScale(scheme, numSteps).range();
 }
