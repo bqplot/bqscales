@@ -15,7 +15,7 @@
 
 import * as d3Scale from 'd3-scale';
 
-import { WidgetModel, WidgetView } from '@jupyter-widgets/base';
+import { WidgetView } from '@jupyter-widgets/base';
 
 import { ScaleModel } from './ScaleModel';
 
@@ -69,11 +69,11 @@ export abstract class Scale extends WidgetView {
 
   offset: number;
   scale:
-    | d3Scale.ScaleTime<Date, number>
-    | d3Scale.ScaleOrdinal<string, number>
-    | d3Scale.ScaleBand<string>
-    | d3Scale.ScaleLinear<number, number>
-    | d3Scale.ScaleLogarithmic<number, number>;
+    | d3Scale.ScaleTime<any, any>
+    | d3Scale.ScaleOrdinal<any, any>
+    | d3Scale.ScaleBand<any>
+    | d3Scale.ScaleLinear<any, any>
+    | d3Scale.ScaleLogarithmic<any, any>;
 
-  model: WidgetModel & ScaleModel;
+  model: ScaleModel;
 }

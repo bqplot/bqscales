@@ -91,7 +91,7 @@ export class OrdinalScale extends Scale {
     });
   }
 
-  scale: d3Scale.ScaleBand<string>;
+  scale: d3Scale.ScaleBand<any>;
   model: OrdinalScaleModel;
 }
 
