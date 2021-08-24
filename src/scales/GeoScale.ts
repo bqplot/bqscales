@@ -23,6 +23,7 @@ import { GeoScaleModel } from './GeoScaleModel';
 export class GeoScale extends WidgetView {
   render() {
     super.render();
+    this.createD3Scale();
     this.listenTo(this.model, 'attribute_changed', this.resetScale);
   }
 
