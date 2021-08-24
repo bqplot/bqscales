@@ -37,15 +37,13 @@ export class OrdinalScaleModel extends ScaleModel {
   private domainChanged() {
     const domain = this.get('domain');
     if (domain !== null && domain.length !== 0) {
-      this.maxFromData = false;
-      this.minFromData = false;
+      this.minMaxFromData = false;
       this.domain = domain.map((d: any) => {
         return d;
       });
       this.trigger('domain_changed');
     } else {
-      this.maxFromData = true;
-      this.minFromData = true;
+      this.minMaxFromData = true;
       this.domain = [];
       this.updateDomain();
     }
@@ -84,7 +82,7 @@ export class OrdinalScaleModel extends ScaleModel {
     // Takes an array and calculates the domain for the particular
     // view. If you have the domain already calculated on your side,
     // call setDomain function.
-    if (!this.minFromData && !this.maxFromData) {
+    if (!this.minMaxFromData) {
       return;
     }
     if (array.length === 0) {
@@ -102,8 +100,7 @@ export class OrdinalScaleModel extends ScaleModel {
     return values;
   }
 
-  private minFromData = true;
-  private maxFromData = true;
+  private minMaxFromData: boolean;
 
   readonly type: string = 'ordinal';
 }
