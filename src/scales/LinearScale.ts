@@ -43,7 +43,9 @@ export class LinearScale extends Scale {
     // To handle the case for a clamped scale for which we have to
     // expand the domain, the copy should be unclamped.
     unpaddedScale.clamp(false);
-    unpaddedScale.domain(this.model.domain);
+    if (this.model.domain.length) {
+      unpaddedScale.domain(this.model.domain);
+    }
     unpaddedScale.range(oldRange);
     this.scale.domain(
       newRange.map((limit) => {
