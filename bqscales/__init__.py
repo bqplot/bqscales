@@ -18,7 +18,8 @@
 from .scales import (  # noqa
     Scale, LinearScale, LogScale, DateScale, OrdinalScale,
     ColorScale, DateColorScale, OrdinalColorScale, GeoScale,
-    Mercator, AlbersUSA, Gnomonic, Stereographic
+    Mercator, Albers, AlbersUSA, Gnomonic, Stereographic,
+    Orthographic, EquiRectangular
 )
 from ._version import __version__, version_info  # noqa
 

@@ -32,10 +32,13 @@ Scales
    DateColorScale
    OrdinalColorScale
    GeoScale
+   Orthographic
    Mercator
+   Albers
    AlbersUSA
    Gnomonic
    Stereographic
+   EquiRectangular
 """
 
 from ipywidgets import Widget, Color
