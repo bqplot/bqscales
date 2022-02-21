@@ -47,6 +47,6 @@ function activateWidgetExtension(
   registry.registerWidget({
     name: MODULE_NAME,
     version: MODULE_VERSION,
-    exports: () => import('./widgets')
+    exports: () => import('./widgets'),
   });
 }
