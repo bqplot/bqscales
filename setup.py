@@ -103,7 +103,7 @@ setup_args = dict(
     ],
     include_package_data=True,
     install_requires=[
-        'ipywidgets>=7.5.0',
+        'ipywidgets>=8.0.0b1,<9',
         'numpy',
     ],
     extras_require={
