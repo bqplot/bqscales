@@ -55,6 +55,13 @@ export abstract class ScaleModel extends WidgetModel {
     this.updateDomain();
   }
 
+  /**
+   * @deprecated use setDomain
+   */
+  set_domain(domain: any[], id: string) {
+    this.setDomain(domain, id);
+  }
+
   delDomain(domain: any[], id: string) {
     if (this.domains[id] !== undefined) {
       delete this.domains[id];
@@ -62,16 +69,44 @@ export abstract class ScaleModel extends WidgetModel {
     }
   }
 
+  /**
+   * @deprecated use delDomain
+   */
+  del_domain(domain: any[], id: string) {
+    this.delDomain(domain, id);
+  }
+
   getDomainSliceInOrder() {
     return this.reverse ? this.domain.slice().reverse() : this.domain.slice();
+  }
+
+  /**
+   * @deprecated use getDomainSliceInOrder
+   */
+  get_domain_slice_in_order() {
+    return this.getDomainSliceInOrder();
   }
 
   getDateElem(param: string) {
     return this.convertToDate(this.get(param));
   }
 
+  /**
+   * @deprecated use getDateElem
+   */
+  get_date_elem(param: string) {
+    return this.getDateElem(param);
+  }
+
   setDateElem(param: string, value: any) {
     this.set(param, this.convertToJson(value));
+  }
+
+  /**
+   * @deprecated use setDateElem
+   */
+  set_date_elem(param: string, value: any) {
+    this.setDateElem(param, value);
   }
 
   convertToDate(elem: any) {
@@ -80,6 +115,13 @@ export abstract class ScaleModel extends WidgetModel {
       return null;
     }
     return new Date(elem);
+  }
+
+  /**
+   * @deprecated use convertToDate
+   */
+  convert_to_date(elem: any) {
+    return this.convertToDate(elem);
   }
 
   convertToJson(elem: any) {
@@ -100,8 +142,29 @@ export abstract class ScaleModel extends WidgetModel {
     }
   }
 
+  /**
+   * @deprecated use convertToJson
+   */
+  convert_to_json(elem: any) {
+    return this.convertToJson(elem);
+  }
+
   computeAndSetDomain(array: any[], id: string): void {}
+
+  /**
+   * @deprecated use computeAndSetDomain
+   */
+  compute_and_set_domain(array: any[], id: string) {
+    this.computeAndSetDomain(array, id);
+  }
   protected updateDomain(): void {}
+
+  /**
+   * @deprecated use updateDomain
+   */
+  update_domain() {
+    this.updateDomain();
+  }
 
   protected setListeners(): void {}
 
