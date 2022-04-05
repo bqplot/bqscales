@@ -44,6 +44,13 @@ export class ColorScaleModel extends LinearScaleModel {
     super.initialize(attributes, options);
   }
 
+  /**
+   * @deprecated use colorRange
+   */
+  get color_range() {
+    return this.colorRange;
+  }
+
   protected setListeners() {
     super.setListeners();
     this.on_some_change(['colors', 'scheme'], this.colorsChanged, this);

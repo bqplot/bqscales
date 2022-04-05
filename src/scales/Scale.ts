@@ -36,12 +36,33 @@ export abstract class Scale extends WidgetView {
     this.scale.range(range);
   }
 
+  /**
+   * @deprecated use setRange
+   */
+  set_range(range: [number, number], padding = undefined) {
+    this.setRange(range, padding);
+  }
+
   computeAndSetDomain(array: any[], id: string) {
     this.model.computeAndSetDomain(array, id);
   }
 
+  /**
+   * @deprecated use computeAndSetDomain
+   */
+  compute_and_set_domain(array: any[], id: string) {
+    this.computeAndSetDomain(array, id);
+  }
+
   setDomain(array: any[], id: string) {
     this.model.setDomain(array, id);
+  }
+
+  /**
+   * @deprecated use set_domain
+   */
+  set_domain(array: any[], id: string) {
+    this.setDomain(array, id);
   }
 
   expandDomain(oldRange: [number, number], newRange: [number, number]) {
@@ -50,6 +71,13 @@ export abstract class Scale extends WidgetView {
     // if you have a current range and then a new range and want to
     // expand the domain to expand to the new range but keep it
     // consistent with the previous one, this is the function you use.
+  }
+
+  /**
+   * @deprecated use expandDomain
+   */
+  expand_domain(oldRange: [number, number], newRange: [number, number]) {
+    this.expandDomain(oldRange, newRange);
   }
 
   protected modelDomainChanged() {
