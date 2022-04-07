@@ -16,13 +16,11 @@
 # limitations under the License.
 
 from __future__ import print_function
-from glob import glob
 from os import path
 
-from setuptools import find_packages
 from jupyter_packaging import (
     create_cmdclass, install_npm, ensure_targets,
-    combine_commands, ensure_python,
+    combine_commands,
     get_version, skip_if_exists
 )
 
@@ -33,9 +31,6 @@ HERE = path.dirname(path.abspath(__file__))
 
 # The name of the project
 name = 'bqscales'
-
-# Ensure a valid python version
-ensure_python('>=3.6')
 
 # Get our version
 version = get_version(path.join(name, '_version.py'))
@@ -59,12 +54,14 @@ package_data_spec = {
 data_files_spec = [
     ('share/jupyter/nbextensions/bqscales', nb_path, '*.js*'),
     ('share/jupyter/labextensions/bqscales', lab_path, '**'),
-    ('etc/jupyter/nbconfig/notebook.d' , HERE, 'bqscales.json')
+    ('etc/jupyter/nbconfig/notebook.d', HERE, 'bqscales.json')
 ]
 
-
-cmdclass = create_cmdclass('jsdeps', package_data_spec=package_data_spec,
-    data_files_spec=data_files_spec)
+cmdclass = create_cmdclass(
+    'jsdeps',
+    package_data_spec=package_data_spec,
+    data_files_spec=data_files_spec
+)
 js_command = combine_commands(
     install_npm(HERE, npm=["yarn"], build_cmd='build'),
     ensure_targets(jstargets),
@@ -77,58 +74,7 @@ else:
     cmdclass['jsdeps'] = skip_if_exists(jstargets, js_command)
 
 
-setup_args = dict(
-    name=name,
-    description='Grammar of Graphics in Python',
-    version=version,
-    scripts=glob(path.join('scripts', '*')),
-    cmdclass=cmdclass,
-    packages=find_packages(),
-    author='Bqplot development team',
-    url='https://github.com/bqplot/bqscales',
-    license='Apache',
-    platforms="Linux, Mac OS X, Windows",
-    keywords=['Jupyter', 'Widgets', 'IPython'],
-    classifiers=[
-        'Intended Audience :: Developers',
-        'Intended Audience :: Science/Research',
-        'License :: OSI Approved :: Apache Software License',
-        'Programming Language :: Python',
-        'Programming Language :: Python :: 3',
-        'Programming Language :: Python :: 3.6',
-        'Programming Language :: Python :: 3.7',
-        'Programming Language :: Python :: 3.8',
-        'Programming Language :: Python :: 3.9',
-        'Framework :: Jupyter',
-    ],
-    include_package_data=True,
-    install_requires=[
-        'ipywidgets>=7.5.0',
-        'numpy',
-    ],
-    extras_require={
-        'test': [
-            'pytest>=3.6',
-            'pytest-cov',
-            'nbval',
-        ],
-        'examples': [
-            # Any requirements for the examples to run
-        ],
-        'docs': [
-            'sphinx>=1.5',
-            'recommonmark',
-            'sphinx_rtd_theme',
-            'nbsphinx>=0.2.13,<0.4.0',
-            'jupyter_sphinx',
-            'nbsphinx-link',
-            'pytest_check_links',
-            'pypandoc',
-        ],
-    },
-    entry_points={
-    },
-)
+setup_args = dict(version=version, cmdclass=cmdclass)
 
 if __name__ == '__main__':
     setup(**setup_args)
