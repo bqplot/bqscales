@@ -48,7 +48,7 @@ jobs:
           yarn run eslint:check
 
       - name: Install bqscales
-        run: pip install -e .
+        run: pip install .
 
       - name: Check installation files
         run: |
