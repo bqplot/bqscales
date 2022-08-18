@@ -13,14 +13,14 @@
  * limitations under the License.
  */
 
-import { ManagerBase, WidgetModel } from '@jupyter-widgets/base';
+import { WidgetModel } from '@jupyter-widgets/base';
 
 import { MODULE_NAME, SEMVER_RANGE } from '../version';
 
 export interface IModelOptions {
   model_id: string;
   comm?: any;
-  widget_manager: ManagerBase<any>;
+  widget_manager: any;
 }
 
 export abstract class ScaleModel extends WidgetModel {
