@@ -51,7 +51,7 @@
     "eslint:fix": "eslint src --ext .ts --fix"
   },
   "dependencies": {
-    "@jupyter-widgets/base": "^6.0.0-rc.2",
+    "@jupyter-widgets/base": "^6.0.0",
     "d3-array": "^2.4.0",
     "d3-geo": "^1.11.9",
     "d3-scale": "^3.2.1",
