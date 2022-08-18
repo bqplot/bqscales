@@ -22,7 +22,7 @@ from os import path
 from setuptools import find_packages
 from jupyter_packaging import (
     create_cmdclass, install_npm, ensure_targets,
-    combine_commands, ensure_python,
+    combine_commands,
     get_version, skip_if_exists
 )
 
@@ -33,9 +33,6 @@ HERE = path.dirname(path.abspath(__file__))
 
 # The name of the project
 name = 'bqscales'
-
-# Ensure a valid python version
-ensure_python('>=3.6')
 
 # Get our version
 version = get_version(path.join(name, '_version.py'))
@@ -103,7 +100,7 @@ setup_args = dict(
     ],
     include_package_data=True,
     install_requires=[
-        'ipywidgets>=8.0.0b1,<9',
+        'ipywidgets>=8.0.0,<9',
         'numpy',
     ],
     extras_require={
