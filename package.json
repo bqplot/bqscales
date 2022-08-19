@@ -1,6 +1,6 @@
 {
   "name": "bqscales",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Grammar of Graphics in Python",
   "keywords": [
     "jupyter",
@@ -51,7 +51,7 @@
     "eslint:fix": "eslint src --ext .ts --fix"
   },
   "dependencies": {
-    "@jupyter-widgets/base": "^6.0.0",
+    "@jupyter-widgets/base": "^2 || ^3 || ^4 || ^5 || ^6",
     "d3-array": "^2.4.0",
     "d3-geo": "^1.11.9",
     "d3-scale": "^3.2.1",
