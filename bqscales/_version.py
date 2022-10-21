@@ -15,5 +15,4 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
-version_info = (0, 3, 1)
-__version__ = ".".join(map(str, version_info))
+__version__ = "0.3.1"

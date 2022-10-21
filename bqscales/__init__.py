@@ -21,7 +21,7 @@ from .scales import (  # noqa
     Mercator, Albers, AlbersUSA, Gnomonic, Stereographic,
     Orthographic, EquiRectangular
 )
-from ._version import __version__, version_info  # noqa
+from ._version import __version__  # noqa
 
 from .nbextension import _jupyter_nbextension_paths  # noqa
 
