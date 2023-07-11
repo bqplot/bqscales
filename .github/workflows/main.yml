@@ -28,7 +28,6 @@ jobs:
       - name: Setup conda
         uses: mamba-org/setup-micromamba@main
         with:
-          activate-environment: bqscales-dev
           environment-file: dev-environment.yml
 
       - name: Python linters
@@ -86,7 +85,6 @@ jobs:
       - name: Setup conda
         uses: mamba-org/setup-micromamba@main
         with:
-          activate-environment: bqscales-dev
           environment-file: dev-environment.yml
 
       - uses: actions/download-artifact@v3
