@@ -67,3 +67,71 @@ jobs:
         run: |
           jupyter nbextension list 2>&1 | grep -ie "bqscales/extension.*enabled" -
           jupyter labextension list 2>&1 | grep -ie "bqscales.*enabled.*ok" -
+
+      - name: Build Python package
+        run: python -m build
+
+      - name: Upload builds
+        uses: actions/upload-artifact@v3
+        with:
+          name: dist ${{ github.run_number }}
+          path: ./dist
+
+  visual-regression-tests:
+    runs-on: ubuntu-latest
+    needs: [build]
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          repo: bqplot/bqplot
+          ref: master
+
+      - name: Install Conda environment with Micromamba
+        uses: mamba-org/provision-with-micromamba@main
+        with:
+          environment-name: bqscales-dev
+          environment-file: dev-environment.yml
+          channels: conda-forge
+
+      - uses: actions/download-artifact@v3
+        with:
+          name: dist ${{ github.run_number }}
+          path: ./dist
+
+      - name: Install the package
+        run: pip install -vv bqscales*.whl
+        working-directory: dist
+
+      - name: Install the package
+        run: pip install bqplot
+
+      - name: Install Galata
+        run: |
+          yarn install
+          yarn playwright install chromium
+        working-directory: ui-tests
+
+      - name: Launch JupyterLab
+        run: yarn run start:detached
+        working-directory: ui-tests
+
+      - name: Wait for JupyterLab
+        uses: ifaxity/wait-on-action@v1
+        with:
+          resource: http-get://localhost:8888/api
+          timeout: 20000
+
+      - name: Run UI Tests
+        run: yarn run test
+        working-directory: ui-tests
+
+      - name: Upload UI Test artifacts
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: ui-test-output
+          path: |
+            ui-tests/playwright-report
+            ui-tests/test-results
