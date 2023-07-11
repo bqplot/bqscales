@@ -92,7 +92,7 @@ jobs:
           path: ./dist
 
       - name: Install the package
-        run: pip install -vv bqscales*.whl --force-reinstall
+        run: pip install -vv bqscales*.whl
         working-directory: dist
 
       - name: Install the package
