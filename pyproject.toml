@@ -24,7 +24,7 @@ keywords = [
 ]
 dependencies = [
     "ipywidgets>=8.0.1,<9",
-    "numpy>=1.10.4,<2.0.0",
+    "numpy>=1.10.4",
     "traitlets>=4.3.0",
     "traittypes>=0.0.6",
 ]
