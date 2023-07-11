@@ -3,6 +3,7 @@ channels:
   - conda-forge
 dependencies:
   - pip
+  - python =3.9
   - build
   - yarn <2
   - jupyter-packaging

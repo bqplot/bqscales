@@ -20,21 +20,16 @@ jobs:
       fail-fast: false
       matrix:
         os: [ubuntu-latest]
-        python-version: [3.8]
 
     steps:
       - name: Checkout
         uses: actions/checkout@v2
 
       - name: Setup conda
-        uses: conda-incubator/setup-miniconda@v2
+        uses: mamba-org/setup-micromamba@main
         with:
           activate-environment: bqscales-dev
           environment-file: dev-environment.yml
-          python-version: ${{ matrix.python-version }}
-          mamba-version: '*'
-          auto-activate-base: false
-          channels: conda-forge
 
       - name: Python linters
         run: flake8 bqscales --ignore=E501,W504,W503
@@ -88,12 +83,11 @@ jobs:
           repository: bqplot/bqplot
           ref: master
 
-      - name: Install Conda environment with Micromamba
-        uses: mamba-org/provision-with-micromamba@main
+      - name: Setup conda
+        uses: mamba-org/setup-micromamba@main
         with:
-          environment-name: bqscales-dev
+          activate-environment: bqscales-dev
           environment-file: dev-environment.yml
-          channels: conda-forge
 
       - uses: actions/download-artifact@v3
         with:
