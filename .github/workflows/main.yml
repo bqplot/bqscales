@@ -85,7 +85,7 @@ jobs:
       - name: Setup conda
         uses: mamba-org/setup-micromamba@main
         with:
-          environment-file: dev-environment.yml
+          environment-file: test-environment.yml
 
       - uses: actions/download-artifact@v3
         with:
@@ -93,7 +93,7 @@ jobs:
           path: ./dist
 
       - name: Install the package
-        run: pip install -vv bqscales*.whl
+        run: pip install -vv bqscales*.whl --force-reinstall
         working-directory: dist
 
       - name: Install the package
