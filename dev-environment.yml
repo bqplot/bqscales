@@ -3,8 +3,9 @@ channels:
   - conda-forge
 dependencies:
   - pip
+  - python =3.9
   - build
-  - yarn
+  - yarn <2
   - jupyter-packaging
   - jupyterlab=3
   - ipywidgets>=7.6
