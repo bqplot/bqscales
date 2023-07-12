@@ -95,7 +95,7 @@
     "rimraf": "^2.6.2",
     "source-map-loader": "^0.2.4",
     "ts-loader": "^6.2.1",
-    "typescript": "^3.7.5",
+    "typescript": "^5",
     "webpack": "^5.61",
     "webpack-cli": "^4"
   },
