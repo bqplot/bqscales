@@ -5,10 +5,9 @@ dependencies:
   - pip
   - python =3.9
   - build
-  - yarn <2
   - jupyter-packaging
-  - jupyterlab=3
-  - ipywidgets>=7.6
+  - jupyterlab=4
+  - ipywidgets>=8.0.7
   - flake8
   - setuptools
   - wheel

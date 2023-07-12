@@ -4,16 +4,16 @@ Grammar of Graphics in Python for bqplot and other Jupyter widgets libraries
 
 ## Installation
 
-You can install using `pip`:
+You can install using ``pip``:
 
 ```bash
 pip install bqscales
 ```
 
-If you use jupyterlab <=2:
+Or using ``conda``/``mamba``:
 
 ```bash
-jupyter labextension install @jupyter-widgets/jupyterlab-manager
+mamba install -c conda-forge bqscales
 ```
 
 ## Development
