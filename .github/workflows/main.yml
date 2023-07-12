@@ -96,7 +96,7 @@ jobs:
         working-directory: dist
 
       - name: Install the package
-        run: pip install bqplot
+        run: pip install . -vvv
 
       - name: Install Galata
         run: |
