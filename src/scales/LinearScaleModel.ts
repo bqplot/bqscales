@@ -53,6 +53,17 @@ export class LinearScaleModel extends ScaleModel {
   }
 
   protected updateDomain() {
+    // if all domains are empty, we reset to the default domain of (0, 1)
+    if (
+      _.every(this.domains, (d) => {
+        return d.length === 0;
+      })
+    ) {
+      this.domain = this.reverse ? [1, 0] : [0, 1];
+      this.trigger('domain_changed', this.domain);
+      return;
+    }
+
     const min = !this.minFromData
       ? this.min
       : d3Array.min(
