@@ -5,6 +5,7 @@ dependencies:
   - pip
   - python
   - python-build
+  - hatchling
   - jupyter-packaging
   - jupyterlab=4
   - ipywidgets>=8.0.7
