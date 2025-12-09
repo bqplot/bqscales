@@ -154,3 +154,5 @@ bqscales/labextension
 **/coverage/
 
 .yarn
+
+bqscales/_version.py

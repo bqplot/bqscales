@@ -41,7 +41,6 @@ Homepage = "https://github.com/bqplot/bqscales"
 
 [tool.hatch.version]
 source = "nodejs"
-path = "bqscales/_version.py"
 
 [tool.hatch.build]
 artifacts = [
@@ -68,6 +67,9 @@ dependencies = [
     "hatch-jupyter-builder>=0.8.1",
 ]
 build-function = "hatch_jupyter_builder.npm_builder"
+
+[tool.hatch.build.hooks.write_version]
+path = "build_hooks/write_version.py"
 
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 path = "."
