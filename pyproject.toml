@@ -73,10 +73,7 @@ build-function = "hatch_jupyter_builder.npm_builder"
 
 [[tool.hatch.build.hooks.build-scripts.scripts]]
 work_dir = "."
-commands = [
-    # Use hatch to get the version, then write _version.py
-    "ver=$(hatch version) && echo \"# auto-generated. Do not edit this.\" > bqscales/_version.py && echo \"__version__ = '$ver'\" >> bqscales/_version.py"
-]
+commands = ['python scripts/write_version.py']
 artifacts = [
     "bqscales/_version.py"
 ]
