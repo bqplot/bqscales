@@ -1,5 +1,6 @@
 [build-system]
 requires = [
+    "hatch",
     "hatchling",
     "hatch-nodejs-version",
     "hatch-build-scripts",
@@ -47,6 +48,7 @@ source = "nodejs"
 artifacts = [
     "bqscales/nbextension/static/index.*",
     "bqscales/labextension",
+    "bqscales/_version.py",
 ]
 
 [tool.hatch.build.targets.wheel.shared-data]
