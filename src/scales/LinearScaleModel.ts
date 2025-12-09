@@ -55,7 +55,7 @@ export class LinearScaleModel extends ScaleModel {
   protected updateDomain() {
     // if all domains are empty, and min or max are not set, we reset to the default domain of (0, 1)
     if (
-      (this.min_from_data || this.max_from_data) &&
+      (this.minFromData || this.maxFromData) &&
       _.every(this.domains, (d) => {
         return d.length === 0;
       })
