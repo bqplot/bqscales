@@ -2,6 +2,7 @@
 requires = [
     "hatchling",
     "hatch-nodejs-version",
+    "hatch-build-scripts",
     "jupyterlab==4.*",
 ]
 build-backend = "hatchling.build"
@@ -68,8 +69,15 @@ dependencies = [
 ]
 build-function = "hatch_jupyter_builder.npm_builder"
 
-[tool.hatch.build.hooks.write_version]
-path = "build_hooks/write_version.py"
+[[tool.hatch.build.hooks.build-scripts.scripts]]
+work_dir = "."
+commands = [
+    # Use hatch to get the version, then write _version.py
+    "ver=$(hatch version) && echo \"# auto-generated. Do not edit this.\" > bqscales/_version.py && echo \"__version__ = '$ver'\" >> bqscales/_version.py"
+]
+artifacts = [
+    "bqscales/_version.py"
+]
 
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 path = "."
