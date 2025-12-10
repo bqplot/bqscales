@@ -75,6 +75,8 @@ build-function = "hatch_jupyter_builder.npm_builder"
 [[tool.hatch.build.hooks.build-scripts.scripts]]
 work_dir = "."
 commands = ['python scripts/write_version.py']
+# _version.py is already mentioned in top-level build artifact
+artifacts = []
 
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 path = "."
