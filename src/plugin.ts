@@ -21,7 +21,7 @@ import { IJupyterWidgetRegistry } from '@jupyter-widgets/base';
 
 import { MODULE_NAME, MODULE_VERSION } from './version';
 
-const EXTENSION_ID = 'bqscales:plugin';
+const EXTENSION_ID = `@bqplot/bqscales:plugin-${MODULE_VERSION}`;
 
 /**
  * The bqscales plugin.
