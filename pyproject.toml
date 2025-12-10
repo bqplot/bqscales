@@ -59,6 +59,7 @@ artifacts = [
 [tool.hatch.build.targets.sdist]
 exclude = [
     ".github",
+    "bqscales/_version.py",
 ]
 
 [tool.hatch.build.hooks.jupyter-builder]
@@ -74,9 +75,6 @@ build-function = "hatch_jupyter_builder.npm_builder"
 [[tool.hatch.build.hooks.build-scripts.scripts]]
 work_dir = "."
 commands = ['python scripts/write_version.py']
-artifacts = [
-    "bqscales/_version.py"
-]
 
 [tool.hatch.build.hooks.jupyter-builder.build-kwargs]
 path = "."
@@ -84,27 +82,3 @@ build_cmd = "build"
 npm = [
     "jlpm",
 ]
-
-[tool.tbump]
-field = [
-    { name = "channel", default = "" },
-    { name = "release", default = "" },
-]
-
-[tool.tbump.version]
-regex = "(?P<major>\\d+)\\.(?P<minor>\\d+)\\.(?P<patch>\\d+)((?P<channel>a|b|rc|.dev)(?P<release>\\d+))?"
-
-[tool.tbump.git]
-message_template = "Bump to {new_version}"
-tag_template = "v{new_version}"
-
-[[tool.tbump.file]]
-src = "pyproject.toml"
-version_template = "version = \"{major}.{minor}.{patch}{channel}{release}\""
-
-[[tool.tbump.file]]
-src = "bqscales/_version.py"
-
-[[tool.tbump.file]]
-src = "package.json"
-version_template = "\"version\": \"{major}.{minor}.{patch}{channel}{release}\""
