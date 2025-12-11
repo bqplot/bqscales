@@ -19,5 +19,9 @@
 Information about the frontend package of the widgets.
 """
 
+from ._version import __version__
+
+major, minor, *_ = __version__.split('.')
+
 module_name = "bqscales"
-module_version = "^0.3"
+module_version = f"^{major}.{minor}"
