@@ -7263,11 +7263,11 @@ __metadata:
   linkType: hard
 
 "qs@npm:^6.12.3, qs@npm:~6.14.0":
-  version: 6.14.0
-  resolution: "qs@npm:6.14.0"
+  version: 6.14.1
+  resolution: "qs@npm:6.14.1"
   dependencies:
     side-channel: ^1.1.0
-  checksum: 189b52ad4e9a0da1a16aff4c58b2a554a8dad9bd7e287c7da7446059b49ca2e33a49e570480e8be406b87fccebf134f51c373cbce36c8c83859efa0c9b71d635
+  checksum: 7fffab0344fd75bfb6b8c94b8ba17f3d3e823d25b615900f68b473c3a078e497de8eaa08f709eaaa170eedfcee50638a7159b98abef7d8c89c2ede79291522f2
   languageName: node
   linkType: hard
 
@@ -8900,11 +8900,11 @@ __metadata:
 
 "typescript@patch:typescript@^5#~builtin<compat/typescript>":
   version: 5.9.3
-  resolution: "typescript@patch:typescript@npm%3A5.9.3#~builtin<compat/typescript>::version=5.9.3&hash=85af82"
+  resolution: "typescript@patch:typescript@npm%3A5.9.3#~builtin<compat/typescript>::version=5.9.3&hash=5786d5"
   bin:
     tsc: bin/tsc
     tsserver: bin/tsserver
-  checksum: 8bb8d86819ac86a498eada254cad7fb69c5f74778506c700c2a712daeaff21d3a6f51fd0d534fe16903cb010d1b74f89437a3d02d4d0ff5ca2ba9a4660de8497
+  checksum: a5a6dc399d3761ded54192031f11d3ad5df8001c7febe3fbbc8098efcb552cdf8f2f402b3618c56dafcd04fef63dee005f4900f608e185404caedc46480539ed
   languageName: node
   linkType: hard
 
