@@ -53,5 +53,5 @@ class Date(TraitType):
         """Create a Date instance."""
         args = (default_value,)
         self.default_value = default_value
-        super(Date, self).__init__(args=args, **kwargs)
+        super().__init__(args=args, **kwargs)
         self.tag(**date_serialization)
