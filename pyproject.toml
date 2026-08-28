@@ -12,7 +12,7 @@ build-backend = "hatchling.build"
 name = "bqscales"
 description = "Grammar of Graphics in Python."
 readme = "README.md"
-requires-python = ">=3.6"
+requires-python = ">=3.10"
 authors = [
     { name = "The BQplot Development Team" },
 ]
